@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CarritoComprasApp", "CarritoComprasApp", "{7B4E4DC6-2563-A37A-9FA2-443D858C8AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarritoCompras.Web", "CarritoComprasApp\CarritoCompras.Web\CarritoCompras.Web.csproj", "{2208EDD3-71FE-EAFE-1D95-9CC622941C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarritoCompras.API", "CarritoComprasApp\CarritoCompras.API\CarritoCompras.API.csproj", "{D1A6A23C-6FD2-47E9-B4A9-093B3FA7A445}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2208EDD3-71FE-EAFE-1D95-9CC622941C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2208EDD3-71FE-EAFE-1D95-9CC622941C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2208EDD3-71FE-EAFE-1D95-9CC622941C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2208EDD3-71FE-EAFE-1D95-9CC622941C03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2208EDD3-71FE-EAFE-1D95-9CC622941C03} = {7B4E4DC6-2563-A37A-9FA2-443D858C8AE6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61501A81-C58E-4316-8702-F9D2240958C8}
+	EndGlobalSection
+EndGlobal
