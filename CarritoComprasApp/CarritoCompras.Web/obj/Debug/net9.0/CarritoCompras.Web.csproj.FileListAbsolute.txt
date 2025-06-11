@@ -232,3 +232,4 @@ C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\CarritoCompras.Web\ob
 C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.web\bin\Debug\net9.0\seed\productos.json
 C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.web\bin\Debug\net9.0\seed\transacciones.json
 C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.web\bin\Debug\net9.0\seed\usuarios.json
+C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.web\obj\Debug\net9.0\CarritoCompras.Web.sourcelink.json
