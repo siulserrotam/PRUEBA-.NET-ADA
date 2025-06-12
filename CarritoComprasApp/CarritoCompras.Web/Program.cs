@@ -1,6 +1,6 @@
 using CarritoCompras.Web.Data;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,20 +15,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("Api", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:5160");
+    client.BaseAddress = new Uri("https://localhost:5160"); // Asegúrate que esta URL sea la correcta
 });
 
-// Agrega soporte para autenticación por cookies
+// Configura autenticación por cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Auth/Login";
         options.LogoutPath = "/Auth/Logout";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        options.SlidingExpiration = true;
     });
 
 // Agrega soporte para MVC y sesiones
 builder.Services.AddControllersWithViews();
-builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 // Construir la aplicación
 var app = builder.Build();
@@ -37,10 +44,12 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    dbContext.Database.EnsureCreated();
 
     try
     {
+        dbContext.Database.EnsureCreated(); // Garantiza que la base esté creada
+
+        // Llamada sincrónica al seeding si es async
         dbContext.SeedFromJsonAsync().GetAwaiter().GetResult();
     }
     catch (Exception ex)

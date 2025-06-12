@@ -1,0 +1,42 @@
+
+@model List<CarritoCompras.Web.Models.Usuario>
+@{
+    ViewData["Title"] = "Usuarios Compradores";
+}
+
+<h2 class="mb-4">Usuarios Compradores</h2>
+<input type="text" id="filtro" class="form-control mb-3" placeholder="Buscar por ID o nombre..." onkeyup="filtrarUsuarios()">
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Identificación</th>
+        </tr>
+    </thead>
+    <tbody id="tablaUsuarios">
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Id</td>
+                <td>@u.Nombres</td>
+                <td>@u.UsuarioLogin</td>
+                <td>@u.Identificacion</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+function filtrarUsuarios() {
+    let input = document.getElementById("filtro").value.toLowerCase();
+    let filas = document.querySelectorAll("#tablaUsuarios tr");
+    filas.forEach(f => {
+        let texto = f.innerText.toLowerCase();
+        f.style.display = texto.includes(input) ? "" : "none";
+    });
+}
+</script>
+

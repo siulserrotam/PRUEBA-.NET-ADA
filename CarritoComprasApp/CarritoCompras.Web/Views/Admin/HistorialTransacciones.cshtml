@@ -1,0 +1,38 @@
+@model List<CarritoCompras.Web.Models.Transaccion>
+
+@{
+    ViewData["Title"] = "Historial de Transacciones";
+}
+
+<h2 class="mb-4">Historial de Transacciones</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Comprador</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaccion in Model)
+            {
+                <tr>
+                    <td>@transaccion.Id</td>
+                    <td>@transaccion.Usuario?.Nombres</td>
+                    <td>@transaccion.Producto?.Nombre</td>
+                    <td>@transaccion.Cantidad</td>
+                    <td>@transaccion.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">No hay transacciones registradas.</div>
+}

@@ -32,16 +32,20 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWN0dWFsaXphclByb2R1Y3RvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Admin/ProductosDisponibles.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdG9zRGlzcG9uaWJsZXMuY3NodG1s
+[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Admin/Administrador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5pc3RyYWRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Admin/Transacciones.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVHJhbnNhY2Npb25lcy5jc2h0bWw=
+[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Admin/HistorialTransacciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSGlzdG9yaWFsVHJhbnNhY2Npb25lcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Admin/UsuariosCompradores.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXN1YXJpb3NDb21wcmFkb3Jlcy5jc2h0bWw=
+[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Admin/Productos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Admin/Usuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXN1YXJpb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Auth/Login.cshtml]
@@ -52,8 +56,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Compra/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhXEluZGV4LmNzaHRtbA==
+[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Comprador/Comprador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXENvbXByYWRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Comprador/Comprar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXENvbXByYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/usuario/OneDrive/Escritorio/api/carritocomprasapp/carritocompras.web/Views/Home/Index.cshtml]

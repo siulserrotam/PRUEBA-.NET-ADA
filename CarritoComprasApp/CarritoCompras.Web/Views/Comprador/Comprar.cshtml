@@ -1,0 +1,31 @@
+@model CarritoCompras.Web.Models.Producto
+@{
+    ViewData["Title"] = "Confirmar Compra";
+    int cantidadSolicitada = ViewBag.CantidadSolicitada ?? 0;
+    bool confirmarConStock = ViewBag.ConfirmarConStockDisponible ?? false;
+}
+
+<h2 class="mb-4">Confirmar Compra</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>@Model.Nombre</h4>
+        <p>@Model.Descripcion</p>
+        <p><strong>Stock disponible:</strong> @Model.Cantidad</p>
+        <p><strong>Cantidad solicitada:</strong> @cantidadSolicitada</p>
+
+        @if (confirmarConStock)
+        {
+            <div class="alert alert-warning">
+                @ViewBag.Mensaje
+            </div>
+        }
+
+        <form asp-action="ComprarConfirmado" asp-controller="Comprador" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="hidden" name="cantidad" value="@(confirmarConStock ? Model.Cantidad : cantidadSolicitada)" />
+            <button type="submit" class="btn btn-success">Confirmar Compra</button>
+            <a href="@Url.Action("Comprador", "Comprador")" class="btn btn-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>

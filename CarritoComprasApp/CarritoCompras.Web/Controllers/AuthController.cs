@@ -10,25 +10,30 @@ namespace CarritoCompras.Web.Controllers
 {
     public class AuthController : Controller
     {
-        // Simulación temporal de usuarios en memoria
         private static List<Usuario> _usuarios = new List<Usuario>();
 
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return View(new Usuario());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string usuarioLogin, string clave)
+        public async Task<IActionResult> Login(Usuario model)
         {
-            var hash = CalcularHash(clave);
-            var usuario = _usuarios.FirstOrDefault(u => u.UsuarioLogin == usuarioLogin && u.Clave == hash);
+            if (string.IsNullOrEmpty(model.UsuarioLogin) || string.IsNullOrEmpty(model.Clave))
+            {
+                ViewBag.Error = "Debe ingresar usuario y clave";
+                return View(model);
+            }
+
+            var hash = CalcularHash(model.Clave);
+            var usuario = _usuarios.FirstOrDefault(u => u.UsuarioLogin == model.UsuarioLogin && u.Clave == hash);
 
             if (usuario == null)
             {
                 ViewBag.Error = "Credenciales inválidas";
-                return View();
+                return View(model);
             }
 
             var claims = new List<Claim>
@@ -44,7 +49,7 @@ namespace CarritoCompras.Web.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             if (usuario.Rol == "Administrador")
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Administrador", "Admin"); // Asegúrate que esta acción existe
             else
                 return RedirectToAction("Productos", "Comprador");
         }
@@ -58,8 +63,9 @@ namespace CarritoCompras.Web.Controllers
         [HttpPost]
         public IActionResult Registro(Usuario model)
         {
-            if (!ModelState.IsValid)
+            if (string.IsNullOrEmpty(model.UsuarioLogin) || string.IsNullOrEmpty(model.Clave))
             {
+                ViewBag.Error = "Todos los campos son obligatorios";
                 return View(model);
             }
 
@@ -88,6 +94,9 @@ namespace CarritoCompras.Web.Controllers
         // Utilidad: Calcular hash SHA256
         private string CalcularHash(string input)
         {
+            if (string.IsNullOrWhiteSpace(input))
+                throw new ArgumentNullException(nameof(input), "La contraseña no puede estar vacía");
+
             using var sha256 = SHA256.Create();
             var bytes = Encoding.UTF8.GetBytes(input);
             var hash = sha256.ComputeHash(bytes);

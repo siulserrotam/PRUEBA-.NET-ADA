@@ -9,6 +9,6 @@ namespace CarritoCompras.Web.Models
         public string UsuarioLogin { get; set; }
         public string Identificacion { get; set; }
         public string Clave { get; set; }
-        public string Rol { get; set; } // "Admin" o "Comprador"
+        public string Rol { get; set; } // "Administrador" o "Comprador"
     }
 }
