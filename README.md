@@ -30,6 +30,9 @@ CompradorController.cs: Funcionalidades para usuarios compradores.
 
 Models/
 
+usuarioLogin admin ; clave = admin
+usuarioLogin juan123 ; clave = 1234
+
 Usuario.cs: Entidad con propiedades: Id, Nombres, Direccion, Telefono, UsuarioLogin, Identificacion, Clave, Rol.
 
 Producto.cs: Entidad con propiedades: Id, Nombre, Cantidad, Descripcion.
