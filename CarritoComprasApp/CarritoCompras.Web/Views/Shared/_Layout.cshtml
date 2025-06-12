@@ -4,50 +4,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Carrito de Compras</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Carrito ADA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CarritoCompras.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Carrito ADA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Administrador"))
+                        {
+                            <li class="nav-item"><a class="nav-link" href="/admin">Panel Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin/historial">Historial</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin/productos">Productos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin/usuarios">Usuarios</a></li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link" href="/comprador">Productos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/comprar">Comprar</a></li>
+                        }
+                        <li class="nav-item"><a class="nav-link text-danger" href="/logout">Cerrar sesión</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link" href="/">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/registro">Registro</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <div class="container text-end mb-2">
-            @{
-                var rol = HttpContextAccessor.HttpContext?.Session.GetString("Rol");
-                if (!string.IsNullOrEmpty(rol))
-                {
-                    <p class="text-success">Bienvenido: @rol</p>
-                }
-            }
-        </div>
-    </header>
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
 
-    <div class="container mt-3">
-        @RenderBody() <!-- Aquí se renderiza la vista que usa este layout -->
-    </div>
+    <footer class="bg-light text-center text-muted py-3 mt-5">
+        <small>© 2025 ADA S.A.S - Sistema de Carrito de Compras</small>
+    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    @RenderSection("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
