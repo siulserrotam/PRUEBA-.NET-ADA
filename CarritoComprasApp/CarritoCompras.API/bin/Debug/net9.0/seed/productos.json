@@ -1,0 +1,18 @@
+[
+  {
+
+    "Nombre": "Laptop Lenovo",
+    "Cantidad": 5,
+    "Descripcion": "Laptop de 15 pulgadas con 8GB RAM"
+  },
+  {
+    "Nombre": "Celular Samsung",
+    "Cantidad": 10,
+    "Descripcion": "Smartphone de gama media"
+  },
+  {
+    "Nombre": "Mouse Inalámbrico",
+    "Cantidad": 20,
+    "Descripcion": "Mouse ergonómico con batería recargable"
+  }
+]

@@ -93,3 +93,7 @@ C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\ob
 C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\obj\Debug\net9.0\CarritoCompras.API.pdb
 C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\obj\Debug\net9.0\CarritoCompras.API.genruntimeconfig.cache
 C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\obj\Debug\net9.0\ref\CarritoCompras.API.dll
+C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\bin\Debug\net9.0\seed\productos.json
+C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\bin\Debug\net9.0\seed\transacciones.json
+C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\bin\Debug\net9.0\seed\usuarios.json
+C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\carritocompras.api\obj\Debug\net9.0\CarritoCompras.API.sourcelink.json

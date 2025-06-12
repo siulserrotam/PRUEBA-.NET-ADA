@@ -1,0 +1,29 @@
+@model CarritoCompras.Web.Models.Usuario
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2 class="mb-4">Iniciar Sesión</h2>
+
+<form asp-controller="Auth" asp-action="Login" method="post">
+    <div class="form-group mb-3">
+        <label asp-for="UsuarioLogin"></label>
+        <input asp-for="UsuarioLogin" class="form-control" />
+        <span asp-validation-for="UsuarioLogin" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Clave"></label>
+        <input asp-for="Clave" class="form-control" type="password" />
+        <span asp-validation-for="Clave" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
