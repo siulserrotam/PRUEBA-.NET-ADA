@@ -15,15 +15,13 @@ namespace CarritoCompras.Web.API.Controllers
             _context = context;
         }
 
-        // GET: /api/usuarios
         [HttpGet]
         public async Task<IActionResult> GetCompradores()
         {
             var usuarios = await _context.ObtenerUsuariosCompradoresAsync();
             return Ok(usuarios);
         }
-
-        // GET: /api/usuarios/{id}
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

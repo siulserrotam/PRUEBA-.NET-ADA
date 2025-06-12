@@ -16,7 +16,6 @@ namespace CarritoCompras.Web.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        // GET: /comprador
         public async Task<IActionResult> Comprador()
         {
             var client = _httpClientFactory.CreateClient("Api");
@@ -31,7 +30,6 @@ namespace CarritoCompras.Web.Controllers
             return View(productos);
         }
 
-        // GET: /comprar
         [HttpGet]
         public async Task<IActionResult> Comprar(int id, int cantidad)
         {
@@ -55,7 +53,6 @@ namespace CarritoCompras.Web.Controllers
             return View(producto);
         }
 
-        // POST: /comprar
         [HttpPost]
         public async Task<IActionResult> ComprarConfirmado(int id, int cantidad)
         {

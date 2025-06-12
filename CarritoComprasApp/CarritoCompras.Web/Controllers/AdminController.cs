@@ -16,13 +16,10 @@ public class AdminController : Controller
         _httpClientFactory = httpClientFactory;
     }
 
-    // GET: /admin
-    public IActionResult Index()
+    public IActionResult Administrador()
     {
         return View();
     }
-
-    // GET: /admin/productos
     public async Task<IActionResult> ProductosDisponibles()
     {
         var client = _httpClientFactory.CreateClient("Api");
@@ -40,7 +37,6 @@ public class AdminController : Controller
         return View(productos);
     }
 
-    // GET: /admin/usuarios
     public async Task<IActionResult> UsuariosCompradores()
     {
         var client = _httpClientFactory.CreateClient("Api");
@@ -58,7 +54,6 @@ public class AdminController : Controller
         return View(usuarios);
     }
 
-    // GET: /admin/historial
     public async Task<IActionResult> HistorialTransacciones()
     {
         var client = _httpClientFactory.CreateClient("Api");
@@ -76,7 +71,6 @@ public class AdminController : Controller
         return View(transacciones);
     }
 
-    // POST: /admin/actualizar-producto
     [HttpPost]
     public async Task<IActionResult> ActualizarProducto(int id, int cantidad)
     {
@@ -99,7 +93,6 @@ public class AdminController : Controller
         var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
         content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-        // Agregar encabezado personalizado para validación de rol
         client.DefaultRequestHeaders.Remove("x-rol");
         client.DefaultRequestHeaders.Add("x-rol", "Administrador");
 

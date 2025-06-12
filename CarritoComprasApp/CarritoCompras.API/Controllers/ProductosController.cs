@@ -16,7 +16,6 @@ namespace CarritoCompras.Web.API.Controllers
             _context = context;
         }
 
-        // GET: /api/productos
         [HttpGet]
         public async Task<IActionResult> GetDisponibles()
         {
@@ -24,7 +23,6 @@ namespace CarritoCompras.Web.API.Controllers
             return Ok(productos);
         }
 
-        // GET: /api/productos/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -35,7 +33,6 @@ namespace CarritoCompras.Web.API.Controllers
             return Ok(producto);
         }
 
-        // PUT: /api/productos/{id}
         [HttpPut("{id}")]
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> ActualizarCantidad(int id, [FromBody] int nuevaCantidad)
