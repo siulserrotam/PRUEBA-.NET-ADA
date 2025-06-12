@@ -1,40 +1,47 @@
 using CarritoCompras.Web.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agrega contexto HTTP para uso en servicios
+// Agrega contexto HTTP
 builder.Services.AddHttpContextAccessor();
 
 // Configura EF Core con SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Configura HttpClient para consumo de la API
+// Configura HttpClient para la API externa
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("Api", client =>
 {
     client.BaseAddress = new Uri("https://localhost:5160");
 });
 
-// MVC y sesiones
+// Agrega soporte para autenticación por cookies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Auth/Login";
+        options.LogoutPath = "/Auth/Logout";
+    });
+
+// Agrega soporte para MVC y sesiones
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
+// Construir la aplicación
 var app = builder.Build();
 
-// Ejecutar seeding de datos desde JSON al iniciar
+// Ejecutar seeding desde JSON al iniciar
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-    // Asegura que la BD exista
     dbContext.Database.EnsureCreated();
 
     try
     {
-        // Ejecutar el seeding
-        await dbContext.SeedFromJsonAsync();
+        dbContext.SeedFromJsonAsync().GetAwaiter().GetResult();
     }
     catch (Exception ex)
     {
@@ -46,7 +53,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Configurar el pipeline
+// Configuración del middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -57,12 +64,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
 
-// Rutas MVC
+// Ruta por defecto
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Usuario}/{action=Login}/{id?}");
+    pattern: "{controller=Auth}/{action=Login}/{id?}");
 
 app.Run();

@@ -1,0 +1,18 @@
+@model CarritoCompras.Web.Models.Usuario
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2 class="mb-4">Iniciar Sesión</h2>
+
+<form asp-controller="Auth" asp-action="Login" method="post">
+    <div class="form-group mb-3">
+        <label asp-for="UsuarioLogin">Usuario</label>
+        <input asp-for="UsuarioLogin" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Clave">Contraseña</label>
+        <input asp-for="Clave" class="form-control" type="password" />
+    </div>
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+</form>
