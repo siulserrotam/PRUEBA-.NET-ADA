@@ -22,17 +22,15 @@ public class AdminController : Controller
         return View();
     }
 
-    public async Task<IActionResult> ProductosDisponibles()
+   public async Task<IActionResult> Productos()
     {
         var client = _httpClientFactory.CreateClient("Api");
         var response = await client.GetAsync("/api/productos");
 
         if (!response.IsSuccessStatusCode)
         {
-            return View("Error", new ErrorViewModel
-            {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            });
+            ViewBag.Error = "No se pudo obtener la lista de productos.";
+            return View("Error");
         }
 
         var content = await response.Content.ReadAsStringAsync();
@@ -41,17 +39,16 @@ public class AdminController : Controller
         return View(productos);
     }
 
-    public async Task<IActionResult> UsuariosCompradores()
+    [HttpGet]
+    public async Task<IActionResult> Usuarios()
     {
         var client = _httpClientFactory.CreateClient("Api");
         var response = await client.GetAsync("/api/usuarios");
 
         if (!response.IsSuccessStatusCode)
         {
-            return View("Error", new ErrorViewModel
-            {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            });
+            ViewBag.Error = "No se pudo obtener la lista de usuarios compradores.";
+            return View("Error");
         }
 
         var content = await response.Content.ReadAsStringAsync();
@@ -88,36 +85,42 @@ public class AdminController : Controller
     {
         if (cantidad < 0)
         {
-            return View("Error", new ErrorViewModel
-            {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            });
+            ViewBag.Error = "La cantidad debe ser mayor o igual a 0.";
+            return View("Error");
         }
 
         var client = _httpClientFactory.CreateClient("Api");
 
-        var usuario = User.Identity?.Name ?? "admin@admin.com"; // Mejora: usar sesión si aplica
-
-        var data = new
+        // Obtener el producto actual
+        var getResponse = await client.GetAsync($"/api/productos/{id}");
+        if (!getResponse.IsSuccessStatusCode)
         {
-            Cantidad = cantidad,
-            Usuario = usuario
-        };
+            ViewBag.Error = "No se pudo obtener el producto para actualizar.";
+            return View("Error");
+        }
 
-        var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
-        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        var getContent = await getResponse.Content.ReadAsStringAsync();
+        var producto = JsonSerializer.Deserialize<Producto>(getContent, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+
+        // Actualizar la cantidad
+        producto.Cantidad = cantidad;
+
+        // Preparar y enviar el producto actualizado
+        var putContent = new StringContent(JsonSerializer.Serialize(producto), Encoding.UTF8, "application/json");
 
         client.DefaultRequestHeaders.Remove("x-rol");
         client.DefaultRequestHeaders.Add("x-rol", "Administrador");
 
-        var response = await client.PutAsync($"/api/productos/{id}", content);
+        var putResponse = await client.PutAsync($"/api/productos/{id}", putContent);
 
-        if (response.IsSuccessStatusCode)
-            return RedirectToAction("ProductosDisponibles");
+        if (putResponse.IsSuccessStatusCode)
+            return RedirectToAction("Productos");
 
-        return View("Error", new ErrorViewModel
-        {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-        });
+        ViewBag.Error = "Error al actualizar el producto: " + await putResponse.Content.ReadAsStringAsync();
+        return View("Error");
     }
+
 }

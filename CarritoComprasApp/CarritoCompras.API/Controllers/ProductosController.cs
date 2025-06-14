@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using CarritoCompras.Web.Data;
-using CarritoCompras.Web.Models;
+using CarritoCompras.Web.Models; 
 using Microsoft.AspNetCore.Authorization;
 
 namespace CarritoCompras.Web.API.Controllers
@@ -32,14 +32,31 @@ namespace CarritoCompras.Web.API.Controllers
 
             return Ok(producto);
         }
-
+        
         [HttpPut("{id}")]
-        [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> ActualizarCantidad(int id, [FromBody] int nuevaCantidad)
+        public async Task<IActionResult> Put(int id, [FromBody] Producto productoActualizado)
         {
-            var usuario = User.Identity?.Name ?? "Desconocido";
-            await _context.ActualizarProductoAsync(id, nuevaCantidad, usuario);
-            return NoContent();
+            if (!Request.Headers.TryGetValue("x-rol", out var rol) || rol != "Administrador")
+                return Unauthorized("No tienes permiso para actualizar productos.");
+
+            var producto = await _context.Productos.FindAsync(id);
+            if (producto == null)
+                return NotFound("Producto no encontrado.");
+
+            producto.Nombre = productoActualizado.Nombre;
+            producto.Descripcion = productoActualizado.Descripcion;
+            producto.Cantidad = productoActualizado.Cantidad;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                mensaje = "Producto actualizado correctamente.",
+                producto.Id,
+                producto.Nombre,
+                producto.Cantidad,
+                producto.Descripcion
+            });
         }
     }
 }

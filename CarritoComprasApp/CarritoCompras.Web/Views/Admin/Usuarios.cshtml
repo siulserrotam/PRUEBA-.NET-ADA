@@ -1,42 +1,42 @@
-
 @model List<CarritoCompras.Web.Models.Usuario>
+
 @{
     ViewData["Title"] = "Usuarios Compradores";
 }
 
 <h2 class="mb-4">Usuarios Compradores</h2>
-<input type="text" id="filtro" class="form-control mb-3" placeholder="Buscar por ID o nombre..." onkeyup="filtrarUsuarios()">
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Identificación</th>
-        </tr>
-    </thead>
-    <tbody id="tablaUsuarios">
-        @foreach (var u in Model)
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombres</th>
+                <th>Identificación</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Rol</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var usuario in Model)
         {
             <tr>
-                <td>@u.Id</td>
-                <td>@u.Nombres</td>
-                <td>@u.UsuarioLogin</td>
-                <td>@u.Identificacion</td>
+                <td>@usuario.Id</td>
+                <td>@usuario.Nombres</td>
+                <td>@usuario.Identificacion</td>
+                <td>@usuario.UsuarioLogin</td>
+                <td>@usuario.Telefono</td>
+                <td>@usuario.Direccion</td>
+                <td>@usuario.Rol</td>
             </tr>
         }
-    </tbody>
-</table>
-
-<script>
-function filtrarUsuarios() {
-    let input = document.getElementById("filtro").value.toLowerCase();
-    let filas = document.querySelectorAll("#tablaUsuarios tr");
-    filas.forEach(f => {
-        let texto = f.innerText.toLowerCase();
-        f.style.display = texto.includes(input) ? "" : "none";
-    });
+        </tbody>
+    </table>
 }
-</script>
-
+else
+{
+    <div class="alert alert-info">No hay usuarios compradores registrados.</div>
+}
