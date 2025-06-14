@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h5aZUGOYEV1UX2g6kne2TgdQdkgr3Viy5XacmOtNR5I=",
+  "Hash": "zFhO3pEOyWLSNUqpa8alI/Mr6nbsBWfSSEvOrOo6GEc=",
   "Source": "CarritoCompras.Web",
   "BasePath": "_content/CarritoCompras.Web",
   "Mode": "Default",
@@ -332,12 +332,12 @@
       "OriginalItemSpec": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-5vi90wy1uj.gz",
+      "Identity": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-7r9bzhb7y7.gz",
       "SourceId": "CarritoCompras.Web",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/CarritoCompras.Web",
-      "RelativePath": "CarritoCompras.Web#[.{fingerprint=5vi90wy1uj}]?.styles.css.gz",
+      "RelativePath": "CarritoCompras.Web#[.{fingerprint=7r9bzhb7y7}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -346,8 +346,8 @@
       "RelatedAsset": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\bundle\\CarritoCompras.Web.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "09lwha70lp",
-      "Integrity": "lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=",
+      "Fingerprint": "au1fw9iyca",
+      "Integrity": "7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\bundle\\CarritoCompras.Web.styles.css"
@@ -647,12 +647,12 @@
       "OriginalItemSpec": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-5vi90wy1uj.gz",
+      "Identity": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-7r9bzhb7y7.gz",
       "SourceId": "CarritoCompras.Web",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/CarritoCompras.Web",
-      "RelativePath": "CarritoCompras.Web#[.{fingerprint=5vi90wy1uj}]!.bundle.scp.css.gz",
+      "RelativePath": "CarritoCompras.Web#[.{fingerprint=7r9bzhb7y7}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -661,8 +661,8 @@
       "RelatedAsset": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\CarritoCompras.Web.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "09lwha70lp",
-      "Integrity": "lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=",
+      "Fingerprint": "au1fw9iyca",
+      "Integrity": "7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\CarritoCompras.Web.bundle.scp.css"
@@ -1375,8 +1375,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "5vi90wy1uj",
-      "Integrity": "wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=",
+      "Fingerprint": "7r9bzhb7y7",
+      "Integrity": "3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\bundle\\CarritoCompras.Web.styles.css"
@@ -1396,8 +1396,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "5vi90wy1uj",
-      "Integrity": "wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=",
+      "Fingerprint": "7r9bzhb7y7",
+      "Integrity": "3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\CarritoCompras.Web.bundle.scp.css"
@@ -2728,13 +2728,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "CarritoCompras.Web.5vi90wy1uj.bundle.scp.css",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-5vi90wy1uj.gz",
+      "Route": "CarritoCompras.Web.7r9bzhb7y7.bundle.scp.css",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-7r9bzhb7y7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001824817518"
+          "Quality": "0.001209189843"
         }
       ],
       "ResponseHeaders": [
@@ -2744,15 +2744,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2772,13 +2772,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "W/\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5vi90wy1uj"
+          "Value": "7r9bzhb7y7"
         },
         {
           "Name": "label",
@@ -2786,12 +2786,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
     {
-      "Route": "CarritoCompras.Web.5vi90wy1uj.bundle.scp.css",
+      "Route": "CarritoCompras.Web.7r9bzhb7y7.bundle.scp.css",
       "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\CarritoCompras.Web.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2801,7 +2801,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1136"
+          "Value": "2494"
         },
         {
           "Name": "Content-Type",
@@ -2809,11 +2809,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2823,7 +2823,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5vi90wy1uj"
+          "Value": "7r9bzhb7y7"
         },
         {
           "Name": "label",
@@ -2831,13 +2831,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
     {
-      "Route": "CarritoCompras.Web.5vi90wy1uj.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-5vi90wy1uj.gz",
+      "Route": "CarritoCompras.Web.7r9bzhb7y7.bundle.scp.css.gz",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-7r9bzhb7y7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2846,7 +2846,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "Content-Type",
@@ -2854,11 +2854,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2876,7 +2876,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5vi90wy1uj"
+          "Value": "7r9bzhb7y7"
         },
         {
           "Name": "label",
@@ -2884,18 +2884,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4="
+          "Value": "sha256-7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw="
         }
       ]
     },
     {
-      "Route": "CarritoCompras.Web.5vi90wy1uj.styles.css",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-5vi90wy1uj.gz",
+      "Route": "CarritoCompras.Web.7r9bzhb7y7.styles.css",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-7r9bzhb7y7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001824817518"
+          "Quality": "0.001209189843"
         }
       ],
       "ResponseHeaders": [
@@ -2905,15 +2905,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2933,13 +2933,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "W/\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5vi90wy1uj"
+          "Value": "7r9bzhb7y7"
         },
         {
           "Name": "label",
@@ -2947,12 +2947,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
     {
-      "Route": "CarritoCompras.Web.5vi90wy1uj.styles.css",
+      "Route": "CarritoCompras.Web.7r9bzhb7y7.styles.css",
       "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\scopedcss\\bundle\\CarritoCompras.Web.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2962,7 +2962,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1136"
+          "Value": "2494"
         },
         {
           "Name": "Content-Type",
@@ -2970,11 +2970,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2984,7 +2984,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5vi90wy1uj"
+          "Value": "7r9bzhb7y7"
         },
         {
           "Name": "label",
@@ -2992,13 +2992,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
     {
-      "Route": "CarritoCompras.Web.5vi90wy1uj.styles.css.gz",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-5vi90wy1uj.gz",
+      "Route": "CarritoCompras.Web.7r9bzhb7y7.styles.css.gz",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-7r9bzhb7y7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3007,7 +3007,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "Content-Type",
@@ -3015,11 +3015,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3037,7 +3037,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5vi90wy1uj"
+          "Value": "7r9bzhb7y7"
         },
         {
           "Name": "label",
@@ -3045,18 +3045,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4="
+          "Value": "sha256-7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw="
         }
       ]
     },
     {
       "Route": "CarritoCompras.Web.bundle.scp.css",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-5vi90wy1uj.gz",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-7r9bzhb7y7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001824817518"
+          "Quality": "0.001209189843"
         }
       ],
       "ResponseHeaders": [
@@ -3066,15 +3066,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3094,13 +3094,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "W/\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
@@ -3115,7 +3115,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1136"
+          "Value": "2494"
         },
         {
           "Name": "Content-Type",
@@ -3123,11 +3123,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3137,13 +3137,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
     {
       "Route": "CarritoCompras.Web.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-5vi90wy1uj.gz",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\h8or4rnww1-7r9bzhb7y7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3152,7 +3152,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "Content-Type",
@@ -3160,11 +3160,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3182,18 +3182,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4="
+          "Value": "sha256-7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw="
         }
       ]
     },
     {
       "Route": "CarritoCompras.Web.styles.css",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-5vi90wy1uj.gz",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-7r9bzhb7y7.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001824817518"
+          "Quality": "0.001209189843"
         }
       ],
       "ResponseHeaders": [
@@ -3203,15 +3203,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3231,13 +3231,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "W/\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
@@ -3252,7 +3252,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1136"
+          "Value": "2494"
         },
         {
           "Name": "Content-Type",
@@ -3260,11 +3260,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY=\""
+          "Value": "\"3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3274,13 +3274,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wafzFxPZDkRLkVBQV2LKjLlFaEWBl4t2J/SKDMdWrwY="
+          "Value": "sha256-3aJK7JAHGUS/LOt185v/zAWQZcyQoPqF3CV5BeTSdnM="
         }
       ]
     },
     {
       "Route": "CarritoCompras.Web.styles.css.gz",
-      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-5vi90wy1uj.gz",
+      "AssetFile": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\CarritoCompras.Web\\obj\\Debug\\net9.0\\compressed\\9uk3x657y0-7r9bzhb7y7.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3289,7 +3289,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "826"
         },
         {
           "Name": "Content-Type",
@@ -3297,11 +3297,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4=\""
+          "Value": "\"7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Jun 2025 01:55:29 GMT"
+          "Value": "Sat, 14 Jun 2025 12:08:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3319,7 +3319,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lLz3PHCTxHUMln9KuBxRMct3Wp/zptVWTaNd/wnylT4="
+          "Value": "sha256-7sTpZ+Uog7Gf6TTZeOIIS7ItOfkdX3HuOqRVpuMk7Dw="
         }
       ]
     },

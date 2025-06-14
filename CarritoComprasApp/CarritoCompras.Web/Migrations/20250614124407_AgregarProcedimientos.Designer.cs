@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarritoCompras.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250611233617_AgregarProcedimientos")]
+    [Migration("20250614124407_AgregarProcedimientos")]
     partial class AgregarProcedimientos
     {
         /// <inheritdoc />

@@ -35,30 +35,46 @@ namespace CarritoCompras.Web.Controllers
             }
 
             var hash = CalcularHash(model.Clave);
-            var usuario = ObtenerUsuarioDesdeBD(model.UsuarioLogin, hash);
 
-            if (usuario == null)
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
+                string query = "SELECT * FROM Usuarios WHERE UsuarioLogin = @UsuarioLogin AND Clave = @Clave";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UsuarioLogin", model.UsuarioLogin);
+                cmd.Parameters.AddWithValue("@Clave", hash);
+
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    var usuario = new Usuario
+                    {
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Nombres = reader["Nombres"].ToString(),
+                        Rol = reader["Rol"].ToString(),
+                        UsuarioLogin = reader["UsuarioLogin"].ToString()
+                    };
+
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, usuario.Nombres),
+                        new Claim(ClaimTypes.Role, usuario.Rol),
+                        new Claim("UsuarioLogin", usuario.UsuarioLogin)
+                    };
+
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principal = new ClaimsPrincipal(identity);
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                    return usuario.Rol == "Administrador"
+                        ? RedirectToAction("Administrador", "Admin")
+                        : RedirectToAction("Productos", "Comprador");
+                }
+
                 ViewBag.Error = "Credenciales inválidas";
                 return View(model);
             }
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, usuario.Nombres),
-                new Claim(ClaimTypes.Role, usuario.Rol),
-                new Claim("UsuarioLogin", usuario.UsuarioLogin)
-            };
-
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
-
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-            if (usuario.Rol == "Administrador")
-                return RedirectToAction("Administrador", "Admin");
-            else
-                return RedirectToAction("Productos", "Comprador");
         }
 
         [HttpGet]
@@ -76,16 +92,36 @@ namespace CarritoCompras.Web.Controllers
                 return View(model);
             }
 
-            if (VerificarUsuarioExiste(model.UsuarioLogin))
+            var hash = CalcularHash(model.Clave);
+
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                ViewBag.Error = "El usuario ya existe";
-                return View(model);
+                string verificar = "SELECT COUNT(*) FROM Usuarios WHERE UsuarioLogin = @UsuarioLogin";
+                SqlCommand cmdVerificar = new SqlCommand(verificar, conn);
+                cmdVerificar.Parameters.AddWithValue("@UsuarioLogin", model.UsuarioLogin);
+
+                conn.Open();
+                int count = (int)cmdVerificar.ExecuteScalar();
+
+                if (count > 0)
+                {
+                    ViewBag.Error = "El usuario ya existe";
+                    return View(model);
+                }
+
+                string insert = @"INSERT INTO Usuarios (Nombres, Direccion, Telefono, UsuarioLogin, Identificacion, Clave, Rol)
+                                  VALUES (@Nombres, @Direccion, @Telefono, @UsuarioLogin, @Identificacion, @Clave, @Rol)";
+                SqlCommand cmd = new SqlCommand(insert, conn);
+                cmd.Parameters.AddWithValue("@Nombres", model.Nombres);
+                cmd.Parameters.AddWithValue("@Direccion", model.Direccion ?? "");
+                cmd.Parameters.AddWithValue("@Telefono", model.Telefono ?? "");
+                cmd.Parameters.AddWithValue("@UsuarioLogin", model.UsuarioLogin);
+                cmd.Parameters.AddWithValue("@Identificacion", model.Identificacion ?? "");
+                cmd.Parameters.AddWithValue("@Clave", hash);
+                cmd.Parameters.AddWithValue("@Rol", "Comprador");
+
+                cmd.ExecuteNonQuery();
             }
-
-            model.Clave = CalcularHash(model.Clave);
-            model.Rol = "Comprador";
-
-            GuardarUsuarioEnBD(model);
 
             TempData["Mensaje"] = "Usuario registrado correctamente";
             return RedirectToAction("Login");
@@ -103,74 +139,6 @@ namespace CarritoCompras.Web.Controllers
             var bytes = Encoding.UTF8.GetBytes(input);
             var hash = sha256.ComputeHash(bytes);
             return Convert.ToBase64String(hash);
-        }
-
-        private Usuario? ObtenerUsuarioDesdeBD(string usuarioLogin, string claveHash)
-        {
-            var connectionString = _configuration.GetConnectionString("DefaultConnection");
-            using var connection = new SqlConnection(connectionString);
-            var query = @"SELECT TOP 1 * FROM Usuarios 
-                          WHERE UsuarioLogin = @UsuarioLogin AND Clave = @Clave";
-
-            using var command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
-            command.Parameters.AddWithValue("@Clave", claveHash);
-
-            connection.Open();
-            using var reader = command.ExecuteReader();
-            if (reader.Read())
-            {
-                return new Usuario
-                {
-                    Id = (int)reader["Id"],
-                    Nombres = reader["Nombres"].ToString(),
-                    Direccion = reader["Direccion"].ToString(),
-                    Telefono = reader["Telefono"].ToString(),
-                    UsuarioLogin = reader["UsuarioLogin"].ToString(),
-                    Identificacion = reader["Identificacion"].ToString(),
-                    Clave = reader["Clave"].ToString(),
-                    Rol = reader["Rol"].ToString()
-                };
-            }
-
-            return null;
-        }
-
-        private bool VerificarUsuarioExiste(string usuarioLogin)
-        {
-            var connectionString = _configuration.GetConnectionString("DefaultConnection");
-            using var connection = new SqlConnection(connectionString);
-            var query = @"SELECT COUNT(*) FROM Usuarios WHERE UsuarioLogin = @UsuarioLogin";
-
-            using var command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
-            connection.Open();
-
-            int count = (int)command.ExecuteScalar();
-            return count > 0;
-        }
-
-        private void GuardarUsuarioEnBD(Usuario model)
-        {
-            var connectionString = _configuration.GetConnectionString("DefaultConnection");
-            using var connection = new SqlConnection(connectionString);
-            var query = @"
-                INSERT INTO Usuarios 
-                (Nombres, Direccion, Telefono, UsuarioLogin, Identificacion, Clave, Rol)
-                VALUES 
-                (@Nombres, @Direccion, @Telefono, @UsuarioLogin, @Identificacion, @Clave, @Rol)";
-            
-            using var command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Nombres", model.Nombres ?? "Usuario");
-            command.Parameters.AddWithValue("@Direccion", model.Direccion ?? "");
-            command.Parameters.AddWithValue("@Telefono", model.Telefono ?? "");
-            command.Parameters.AddWithValue("@UsuarioLogin", model.UsuarioLogin);
-            command.Parameters.AddWithValue("@Identificacion", model.Identificacion ?? "");
-            command.Parameters.AddWithValue("@Clave", model.Clave);
-            command.Parameters.AddWithValue("@Rol", model.Rol);
-
-            connection.Open();
-            command.ExecuteNonQuery();
         }
     }
 }
