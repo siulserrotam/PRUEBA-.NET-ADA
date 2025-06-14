@@ -56,12 +56,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/CarritoCompras.Web/Views/Comprador/Comprador.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXENvbXByYWRvci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/CarritoCompras.Web/Views/Comprador/Comprar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXENvbXByYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/CarritoCompras.Web/Views/Comprador/Productos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXFByb2R1Y3Rvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/CarritoCompras.Web/Views/Home/Index.cshtml]

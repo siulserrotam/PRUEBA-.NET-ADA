@@ -16,7 +16,7 @@ namespace CarritoCompras.Web.API.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("disponibles")]
         public async Task<IActionResult> GetDisponibles()
         {
             var productos = await _context.ObtenerProductosDisponiblesAsync();

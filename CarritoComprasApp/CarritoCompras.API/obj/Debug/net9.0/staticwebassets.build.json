@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aPYJLlb8/POoeXXbTtPvUb4AMZQcr5UsG9ia8Xx9e+w=",
+  "Hash": "7uxvj9cEbJIeSwwOd4fS1lz+ikwp49B79oDRhkfkUaA=",
   "Source": "CarritoCompras.API",
   "BasePath": "_content/CarritoCompras.API",
   "Mode": "Default",
@@ -2772,7 +2772,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:15:06 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:08 GMT"
         },
         {
           "Name": "Vary",
@@ -2829,7 +2829,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:15:06 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:08 GMT"
         }
       ],
       "EndpointProperties": [
@@ -2878,7 +2878,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:15:06 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:08 GMT"
         },
         {
           "Name": "Vary",
@@ -2933,7 +2933,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:15:06 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:08 GMT"
         },
         {
           "Name": "Vary",
@@ -2982,7 +2982,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:15:06 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:08 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3023,7 +3023,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:15:06 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:08 GMT"
         },
         {
           "Name": "Vary",
@@ -21620,7 +21620,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:19:16 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21689,7 +21689,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:19:16 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:09 GMT"
         },
         {
           "Name": "Link",
@@ -21734,7 +21734,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:19:16 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21789,7 +21789,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:19:16 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21850,7 +21850,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:19:16 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:09 GMT"
         },
         {
           "Name": "Link",
@@ -21887,7 +21887,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 15:19:16 GMT"
+          "Value": "Sat, 14 Jun 2025 15:49:09 GMT"
         },
         {
           "Name": "Cache-Control",

@@ -1,31 +1,34 @@
 @model CarritoCompras.Web.Models.Producto
+
 @{
     ViewData["Title"] = "Confirmar Compra";
-    int cantidadSolicitada = ViewBag.CantidadSolicitada ?? 0;
-    bool confirmarConStock = ViewBag.ConfirmarConStockDisponible ?? false;
 }
 
-<h2 class="mb-4">Confirmar Compra</h2>
+<h2>Confirmar Compra</h2>
 
-<div class="card">
-    <div class="card-body">
-        <h4>@Model.Nombre</h4>
-        <p>@Model.Descripcion</p>
-        <p><strong>Stock disponible:</strong> @Model.Cantidad</p>
-        <p><strong>Cantidad solicitada:</strong> @cantidadSolicitada</p>
+<div class="card p-4">
+    <h4>@Model.Nombre</h4>
+    <p>@Model.Descripcion</p>
+    <p><strong>Disponible:</strong> @Model.Cantidad unidad(es)</p>
+    <p><strong>Solicitado:</strong> @ViewBag.CantidadSolicitada unidad(es)</p>
 
-        @if (confirmarConStock)
-        {
-            <div class="alert alert-warning">
-                @ViewBag.Mensaje
-            </div>
-        }
-
-        <form asp-action="ComprarConfirmado" asp-controller="Comprador" method="post">
+    @if (ViewBag.ConfirmarConStockDisponible == true)
+    {
+        <div class="alert alert-warning">
+            @ViewBag.Mensaje
+        </div>
+        <form asp-action="ComprarConfirmado" method="post">
             <input type="hidden" name="id" value="@Model.Id" />
-            <input type="hidden" name="cantidad" value="@(confirmarConStock ? Model.Cantidad : cantidadSolicitada)" />
-            <button type="submit" class="btn btn-success">Confirmar Compra</button>
-            <a href="@Url.Action("Comprador", "Comprador")" class="btn btn-secondary ms-2">Cancelar</a>
+            <input type="hidden" name="cantidad" value="@ViewBag.CantidadDisponible" />
+            <button type="submit" class="btn btn-warning">Sí, comprar @ViewBag.CantidadDisponible unidad(es)</button>
         </form>
-    </div>
+    }
+    else
+    {
+        <form asp-action="ComprarConfirmado" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="hidden" name="cantidad" value="@ViewBag.CantidadSolicitada" />
+            <button type="submit" class="btn btn-primary">Confirmar Compra</button>
+        </form>
+    }
 </div>

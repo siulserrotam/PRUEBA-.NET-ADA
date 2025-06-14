@@ -25,7 +25,7 @@ public class AdminController : Controller
    public async Task<IActionResult> Productos()
     {
         var client = _httpClientFactory.CreateClient("Api");
-        var response = await client.GetAsync("/api/productos");
+        var response = await client.GetAsync("/api/productos/disponibles");
 
         if (!response.IsSuccessStatusCode)
         {

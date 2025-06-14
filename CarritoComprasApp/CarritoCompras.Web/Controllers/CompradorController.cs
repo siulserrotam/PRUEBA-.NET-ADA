@@ -16,7 +16,8 @@ namespace CarritoCompras.Web.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Comprador()
+        // Mostrar productos disponibles
+        public async Task<IActionResult> Productos()
         {
             var client = _httpClientFactory.CreateClient("Api");
             var response = await client.GetAsync("/api/productos/disponibles");
@@ -27,9 +28,10 @@ namespace CarritoCompras.Web.Controllers
             var content = await response.Content.ReadAsStringAsync();
             var productos = JsonSerializer.Deserialize<List<Producto>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-            return View(productos);
+            return View("Productos", productos); // Vista: Views/Comprador/Productos.cshtml
         }
 
+        // Vista previa de compra con validación de stock
         [HttpGet]
         public async Task<IActionResult> Comprar(int id, int cantidad)
         {
@@ -48,11 +50,13 @@ namespace CarritoCompras.Web.Controllers
             {
                 ViewBag.Mensaje = $"Solo hay {producto.Cantidad} unidades disponibles. ¿Desea comprar esa cantidad?";
                 ViewBag.ConfirmarConStockDisponible = true;
+                ViewBag.CantidadDisponible = producto.Cantidad;
             }
 
-            return View(producto);
+            return View("Comprar", producto); // Vista: Views/Comprador/Comprar.cshtml
         }
 
+        // Confirmación de compra y envío a la API
         [HttpPost]
         public async Task<IActionResult> ComprarConfirmado(int id, int cantidad)
         {
@@ -74,7 +78,7 @@ namespace CarritoCompras.Web.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["Mensaje"] = "Compra realizada correctamente.";
-                return RedirectToAction("Comprador");
+                return RedirectToAction("Productos");
             }
 
             ViewBag.Error = await response.Content.ReadAsStringAsync();
