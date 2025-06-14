@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CarritoCompras.Web.Models;
 using System.Net.Http.Headers;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class AdminController : Controller
 {
@@ -20,6 +21,7 @@ public class AdminController : Controller
     {
         return View();
     }
+
     public async Task<IActionResult> ProductosDisponibles()
     {
         var client = _httpClientFactory.CreateClient("Api");
@@ -27,8 +29,10 @@ public class AdminController : Controller
 
         if (!response.IsSuccessStatusCode)
         {
-            ViewBag.Error = "No se pudo obtener la lista de productos.";
-            return View("Error");
+            return View("Error", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
 
         var content = await response.Content.ReadAsStringAsync();
@@ -44,8 +48,10 @@ public class AdminController : Controller
 
         if (!response.IsSuccessStatusCode)
         {
-            ViewBag.Error = "No se pudo obtener la lista de usuarios compradores.";
-            return View("Error");
+            return View("Error", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
 
         var content = await response.Content.ReadAsStringAsync();
@@ -53,7 +59,8 @@ public class AdminController : Controller
 
         return View(usuarios);
     }
-
+    
+    [HttpGet]
     public async Task<IActionResult> HistorialTransacciones()
     {
         var client = _httpClientFactory.CreateClient("Api");
@@ -61,12 +68,17 @@ public class AdminController : Controller
 
         if (!response.IsSuccessStatusCode)
         {
-            ViewBag.Error = "No se pudo obtener el historial de transacciones.";
-            return View("Error");
+            return View("Error", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
 
         var content = await response.Content.ReadAsStringAsync();
-        var transacciones = JsonSerializer.Deserialize<List<Transaccion>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        var transacciones = JsonSerializer.Deserialize<List<TransaccionDTO>>(content, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
 
         return View(transacciones);
     }
@@ -76,13 +88,15 @@ public class AdminController : Controller
     {
         if (cantidad < 0)
         {
-            ViewBag.Error = "La cantidad debe ser mayor o igual a 0.";
-            return View("Error");
+            return View("Error", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
 
         var client = _httpClientFactory.CreateClient("Api");
 
-        var usuario = User.Identity?.Name ?? "admin@admin.com"; // opcional: puedes mejorar con HttpContext.Session
+        var usuario = User.Identity?.Name ?? "admin@admin.com"; // Mejora: usar sesión si aplica
 
         var data = new
         {
@@ -101,7 +115,9 @@ public class AdminController : Controller
         if (response.IsSuccessStatusCode)
             return RedirectToAction("ProductosDisponibles");
 
-        ViewBag.Error = "Error al actualizar el producto: " + await response.Content.ReadAsStringAsync();
-        return View("Error");
+        return View("Error", new ErrorViewModel
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+        });
     }
 }
