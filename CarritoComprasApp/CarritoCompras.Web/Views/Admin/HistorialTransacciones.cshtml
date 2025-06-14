@@ -1,4 +1,4 @@
-@model List<CarritoCompras.Web.Models.Transaccion>
+@model List<CarritoCompras.Web.Models.TransaccionDTO>
 
 @{
     ViewData["Title"] = "Historial de Transacciones";
@@ -23,8 +23,8 @@
             {
                 <tr>
                     <td>@transaccion.Id</td>
-                    <td>@transaccion.Usuario?.Nombres</td>
-                    <td>@transaccion.Producto?.Nombre</td>
+                    <td>@transaccion.UsuarioId</td>
+                    <td>@transaccion.Producto</td>
                     <td>@transaccion.Cantidad</td>
                     <td>@transaccion.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
                 </tr>

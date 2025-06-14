@@ -25,15 +25,26 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI(c =>
+// Solo usa Swagger en entorno de desarrollo
+if (app.Environment.IsDevelopment())
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Carrito de Compras API v1");
-    c.RoutePrefix = string.Empty; 
-});
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Carrito de Compras API v1");
+        c.RoutePrefix = string.Empty;
+    });
+}
 
+// Redirección HTTPS
 app.UseHttpsRedirection();
 
+// Autenticación y autorización (si lo usas en el futuro)
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Mapear controladores
 app.MapControllers();
 
+// Ejecutar la aplicación
 app.Run();

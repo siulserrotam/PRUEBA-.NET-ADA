@@ -12,10 +12,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Configura HttpClient para la API externa
-builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("Api", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:5160"); // Asegúrate que esta URL sea la correcta
+    client.BaseAddress = new Uri("https://localhost:7249"); // Cambiado a puerto HTTPS correcto de la API
 });
 
 // Configura autenticación por cookies
@@ -30,6 +29,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 // Agrega soporte para MVC y sesiones
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -37,10 +37,10 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// Construir la aplicación
+// Construye la aplicación
 var app = builder.Build();
 
-// Ejecutar seeding desde JSON al iniciar
+// Ejecuta seeding desde JSON al iniciar
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
@@ -48,9 +48,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         dbContext.Database.EnsureCreated(); // Garantiza que la base esté creada
-
-        // Llamada sincrónica al seeding si es async
-        dbContext.SeedFromJsonAsync().GetAwaiter().GetResult();
+        dbContext.SeedFromJsonAsync().GetAwaiter().GetResult(); // Ejecuta seeding si lo tienes implementado
     }
     catch (Exception ex)
     {
@@ -63,7 +61,11 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configuración del middleware
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage(); 
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();

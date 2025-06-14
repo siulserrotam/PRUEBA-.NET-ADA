@@ -1,9 +1,15 @@
 @model List<CarritoCompras.Web.Models.Producto>
+
 @{
     ViewData["Title"] = "Productos Disponibles";
 }
 
 <h2 class="mb-4">Productos Disponibles</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success">@TempData["Mensaje"]</div>
+}
 
 <table class="table table-bordered table-hover">
     <thead class="table-dark">
@@ -34,8 +40,3 @@
         }
     </tbody>
 </table>
-
-@if (TempData["Mensaje"] != null)
-{
-    <div class="alert alert-success">@TempData["Mensaje"]</div>
-}

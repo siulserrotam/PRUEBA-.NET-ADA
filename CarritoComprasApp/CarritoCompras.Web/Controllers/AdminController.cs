@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CarritoCompras.Web.Models;
 using System.Net.Http.Headers;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class AdminController : Controller
 {
@@ -20,10 +21,11 @@ public class AdminController : Controller
     {
         return View();
     }
-    public async Task<IActionResult> ProductosDisponibles()
+
+   public async Task<IActionResult> Productos()
     {
         var client = _httpClientFactory.CreateClient("Api");
-        var response = await client.GetAsync("/api/productos");
+        var response = await client.GetAsync("/api/productos/disponibles");
 
         if (!response.IsSuccessStatusCode)
         {
@@ -37,7 +39,8 @@ public class AdminController : Controller
         return View(productos);
     }
 
-    public async Task<IActionResult> UsuariosCompradores()
+    [HttpGet]
+    public async Task<IActionResult> Usuarios()
     {
         var client = _httpClientFactory.CreateClient("Api");
         var response = await client.GetAsync("/api/usuarios");
@@ -53,7 +56,8 @@ public class AdminController : Controller
 
         return View(usuarios);
     }
-
+    
+    [HttpGet]
     public async Task<IActionResult> HistorialTransacciones()
     {
         var client = _httpClientFactory.CreateClient("Api");
@@ -61,12 +65,17 @@ public class AdminController : Controller
 
         if (!response.IsSuccessStatusCode)
         {
-            ViewBag.Error = "No se pudo obtener el historial de transacciones.";
-            return View("Error");
+            return View("Error", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
 
         var content = await response.Content.ReadAsStringAsync();
-        var transacciones = JsonSerializer.Deserialize<List<Transaccion>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        var transacciones = JsonSerializer.Deserialize<List<TransaccionDTO>>(content, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
 
         return View(transacciones);
     }
@@ -82,26 +91,36 @@ public class AdminController : Controller
 
         var client = _httpClientFactory.CreateClient("Api");
 
-        var usuario = User.Identity?.Name ?? "admin@admin.com"; // opcional: puedes mejorar con HttpContext.Session
-
-        var data = new
+        // Obtener el producto actual
+        var getResponse = await client.GetAsync($"/api/productos/{id}");
+        if (!getResponse.IsSuccessStatusCode)
         {
-            Cantidad = cantidad,
-            Usuario = usuario
-        };
+            ViewBag.Error = "No se pudo obtener el producto para actualizar.";
+            return View("Error");
+        }
 
-        var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
-        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        var getContent = await getResponse.Content.ReadAsStringAsync();
+        var producto = JsonSerializer.Deserialize<Producto>(getContent, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+
+        // Actualizar la cantidad
+        producto.Cantidad = cantidad;
+
+        // Preparar y enviar el producto actualizado
+        var putContent = new StringContent(JsonSerializer.Serialize(producto), Encoding.UTF8, "application/json");
 
         client.DefaultRequestHeaders.Remove("x-rol");
         client.DefaultRequestHeaders.Add("x-rol", "Administrador");
 
-        var response = await client.PutAsync($"/api/productos/{id}", content);
+        var putResponse = await client.PutAsync($"/api/productos/{id}", putContent);
 
-        if (response.IsSuccessStatusCode)
-            return RedirectToAction("ProductosDisponibles");
+        if (putResponse.IsSuccessStatusCode)
+            return RedirectToAction("Productos");
 
-        ViewBag.Error = "Error al actualizar el producto: " + await response.Content.ReadAsStringAsync();
+        ViewBag.Error = "Error al actualizar el producto: " + await putResponse.Content.ReadAsStringAsync();
         return View("Error");
     }
+
 }
