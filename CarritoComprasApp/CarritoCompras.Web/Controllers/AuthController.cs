@@ -5,12 +5,19 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Cryptography;
 using System.Text;
+using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace CarritoCompras.Web.Controllers
 {
     public class AuthController : Controller
     {
-        private static List<Usuario> _usuarios = new List<Usuario>();
+        private readonly IConfiguration _configuration;
+
+        public AuthController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         [HttpGet]
         public IActionResult Login()
@@ -28,7 +35,7 @@ namespace CarritoCompras.Web.Controllers
             }
 
             var hash = CalcularHash(model.Clave);
-            var usuario = _usuarios.FirstOrDefault(u => u.UsuarioLogin == model.UsuarioLogin && u.Clave == hash);
+            var usuario = ObtenerUsuarioDesdeBD(model.UsuarioLogin, hash);
 
             if (usuario == null)
             {
@@ -49,7 +56,7 @@ namespace CarritoCompras.Web.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             if (usuario.Rol == "Administrador")
-                return RedirectToAction("Administrador", "Admin"); // Asegúrate que esta acción existe
+                return RedirectToAction("Administrador", "Admin");
             else
                 return RedirectToAction("Productos", "Comprador");
         }
@@ -57,7 +64,7 @@ namespace CarritoCompras.Web.Controllers
         [HttpGet]
         public IActionResult Registro()
         {
-            return View();
+            return View(new Usuario());
         }
 
         [HttpPost]
@@ -69,7 +76,7 @@ namespace CarritoCompras.Web.Controllers
                 return View(model);
             }
 
-            if (_usuarios.Any(u => u.UsuarioLogin == model.UsuarioLogin))
+            if (VerificarUsuarioExiste(model.UsuarioLogin))
             {
                 ViewBag.Error = "El usuario ya existe";
                 return View(model);
@@ -77,9 +84,8 @@ namespace CarritoCompras.Web.Controllers
 
             model.Clave = CalcularHash(model.Clave);
             model.Rol = "Comprador";
-            model.Id = _usuarios.Count + 1;
 
-            _usuarios.Add(model);
+            GuardarUsuarioEnBD(model);
 
             TempData["Mensaje"] = "Usuario registrado correctamente";
             return RedirectToAction("Login");
@@ -91,16 +97,80 @@ namespace CarritoCompras.Web.Controllers
             return RedirectToAction("Login");
         }
 
-        // Utilidad: Calcular hash SHA256
         private string CalcularHash(string input)
         {
-            if (string.IsNullOrWhiteSpace(input))
-                throw new ArgumentNullException(nameof(input), "La contraseña no puede estar vacía");
-
             using var sha256 = SHA256.Create();
             var bytes = Encoding.UTF8.GetBytes(input);
             var hash = sha256.ComputeHash(bytes);
             return Convert.ToBase64String(hash);
+        }
+
+        private Usuario? ObtenerUsuarioDesdeBD(string usuarioLogin, string claveHash)
+        {
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            using var connection = new SqlConnection(connectionString);
+            var query = @"SELECT TOP 1 * FROM Usuarios 
+                          WHERE UsuarioLogin = @UsuarioLogin AND Clave = @Clave";
+
+            using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
+            command.Parameters.AddWithValue("@Clave", claveHash);
+
+            connection.Open();
+            using var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                return new Usuario
+                {
+                    Id = (int)reader["Id"],
+                    Nombres = reader["Nombres"].ToString(),
+                    Direccion = reader["Direccion"].ToString(),
+                    Telefono = reader["Telefono"].ToString(),
+                    UsuarioLogin = reader["UsuarioLogin"].ToString(),
+                    Identificacion = reader["Identificacion"].ToString(),
+                    Clave = reader["Clave"].ToString(),
+                    Rol = reader["Rol"].ToString()
+                };
+            }
+
+            return null;
+        }
+
+        private bool VerificarUsuarioExiste(string usuarioLogin)
+        {
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            using var connection = new SqlConnection(connectionString);
+            var query = @"SELECT COUNT(*) FROM Usuarios WHERE UsuarioLogin = @UsuarioLogin";
+
+            using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
+            connection.Open();
+
+            int count = (int)command.ExecuteScalar();
+            return count > 0;
+        }
+
+        private void GuardarUsuarioEnBD(Usuario model)
+        {
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            using var connection = new SqlConnection(connectionString);
+            var query = @"
+                INSERT INTO Usuarios 
+                (Nombres, Direccion, Telefono, UsuarioLogin, Identificacion, Clave, Rol)
+                VALUES 
+                (@Nombres, @Direccion, @Telefono, @UsuarioLogin, @Identificacion, @Clave, @Rol)";
+            
+            using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Nombres", model.Nombres ?? "Usuario");
+            command.Parameters.AddWithValue("@Direccion", model.Direccion ?? "");
+            command.Parameters.AddWithValue("@Telefono", model.Telefono ?? "");
+            command.Parameters.AddWithValue("@UsuarioLogin", model.UsuarioLogin);
+            command.Parameters.AddWithValue("@Identificacion", model.Identificacion ?? "");
+            command.Parameters.AddWithValue("@Clave", model.Clave);
+            command.Parameters.AddWithValue("@Rol", model.Rol);
+
+            connection.Open();
+            command.ExecuteNonQuery();
         }
     }
 }

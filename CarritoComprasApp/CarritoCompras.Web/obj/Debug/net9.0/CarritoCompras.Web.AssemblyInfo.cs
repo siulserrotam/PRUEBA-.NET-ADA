@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarritoCompras.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2952106d69e1f67ffa11279b2681bf55a08b3adb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4e802306ec252163a0670bfc386b9305bb01b56")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarritoCompras.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarritoCompras.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
