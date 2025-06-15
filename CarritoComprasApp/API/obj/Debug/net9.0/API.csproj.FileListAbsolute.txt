@@ -1,0 +1,8 @@
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.csproj.AssemblyReference.cache
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.AssemblyInfoInputs.cache
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.AssemblyInfo.cs
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.csproj.CoreCompileInputs.cache
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\API\obj\Debug\net9.0\API.sourcelink.json

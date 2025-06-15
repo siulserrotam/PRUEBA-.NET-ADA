@@ -1,0 +1,22 @@
+@{
+    var rol = Context.Session.GetString("Rol");
+    var nombre = Context.Session.GetString("Nombre");
+}
+
+<ul class="navbar-nav">
+    @if (!string.IsNullOrEmpty(rol))
+    {
+        <li class="nav-item">
+            <span class="nav-link">Hola, @nombre (@rol)</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-danger" asp-controller="Login" asp-action="Logout">Cerrar sesión</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Login" asp-action="Login">Iniciar sesión</a>
+        </li>
+    }
+</ul>

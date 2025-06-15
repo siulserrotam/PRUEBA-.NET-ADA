@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarritoCompras.API", "CarritoCompras.API\CarritoCompras.API.csproj", "{E177B23F-02D3-0F8B-00F7-A8D895A1F4E3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarritoCompras.Web", "CarritoCompras.Web\CarritoCompras.Web.csproj", "{FD44F515-72DB-E125-EF55-6B93B1FCD868}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{1E57354D-47C6-44D3-A787-9CD52A39094B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{C6043E07-86F2-4880-A1BD-3816F146806B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{AB49CFF6-E521-4DE6-BD08-12267F38ACA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infraestructure", "Infraestructure\Infraestructure.csproj", "{AB49CFF6-E521-4DE6-BD08-12267F38ACA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{E19BF5CC-6A60-4570-AD72-6AF579FEA1F8}"
 EndProject

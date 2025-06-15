@@ -1,0 +1,25 @@
+@model List<Domain.Models.Usuario>
+
+<h2>Usuarios Compradores</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Nombres</td>
+                <td>@u.UsuarioLogin</td>
+                <td>@u.Telefono</td>
+                <td>@u.Direccion</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+@model List<Domain.Models.Transaccion>
+
+<h2>Historial de Transacciones</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.Usuario?.Nombres</td>
+                <td>@t.Producto?.Nombre</td>
+                <td>@t.Cantidad</td>
+                <td>@t.Fecha.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

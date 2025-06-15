@@ -1,20 +1,30 @@
-
-using Microsoft.OpenApi.Models;
+using Infraestructure.Data;
+using Infraestructure.Repositories;
+using Infraestructure.Interfaces;
+using Application.Interfaces;
+using Application.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar conexión a la base de datos
+// 1. Configurar conexión a la base de datos
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Agregar servicios de controllers
+// 2. Inyectar dependencias (repositorios y servicios)
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<ITransaccionRepository, TransaccionRepository>();
+builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
+
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<ITransaccionService, TransaccionService>();
+builder.Services.AddScoped<IProductoService, ProductoService>();
+
+// 3. Agregar servicios de controladores
 builder.Services.AddControllers();
 
-// Configurar CORS para permitir solicitudes desde el frontend
-builder.Services.AddScoped<UsuarioRepositorio>();
-
-// Configurar Swagger/OpenAPI
+// 4. Configurar Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -26,12 +36,16 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// 5. Construir la aplicación
 var app = builder.Build();
 
-// Mostrar detalles de errores en entorno de desarrollo
+// 7. Middleware personalizado para autorización por rol
+app.UseMiddleware<RoleAuthorizationMiddleware>();
+
+// 8. Configurar entorno
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage(); // Esta línea muestra los errores internos en detalle
+    app.UseDeveloperExceptionPage();
 
     app.UseSwagger();
     app.UseSwaggerUI(c =>
@@ -41,15 +55,14 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Redirección HTTPS
+// 9. Middleware ASP.NET
 app.UseHttpsRedirection();
 
-// Autenticación y autorización (si lo usas en el futuro)
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Mapear controladores
+// 10. Mapeo de controladores
 app.MapControllers();
 
-// Ejecutar la aplicación
+// 11. Ejecutar la aplicación
 app.Run();

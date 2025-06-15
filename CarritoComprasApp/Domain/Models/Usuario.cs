@@ -1,14 +1,17 @@
-namespace CarritoCompras.Domain.Models
+namespace Domain.Models
 {
     public class Usuario
     {
         public int Id { get; set; }
-        public string Nombres { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string UsuarioLogin { get; set; }
-        public string Identificacion { get; set; }
-        public string Clave { get; set; }
-        public string Rol { get; set; } // "Administrador" o "Comprador"
+        public string Nombres { get; set; } = string.Empty;
+        public string Direccion { get; set; } = string.Empty;
+        public string Telefono { get; set; } = string.Empty;
+        public string UsuarioLogin { get; set; } = string.Empty;
+        public string Identificacion { get; set; } = string.Empty;
+        public string Clave { get; set; } = string.Empty; // Codificada
+        public string Rol { get; set; } = "Cliente"; // o "Administrador"
+
+        // Navegación
+        public ICollection<Transaccion>? Transacciones { get; set; }
     }
 }

@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Infraestructure.Data;
+using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
-
-namespace CarritoCompras.API.Controllers
+namespace API.Controllers
 {
     [Route("api/usuarios")]
     [ApiController]
@@ -17,7 +19,9 @@ namespace CarritoCompras.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCompradores()
         {
-            var usuarios = await _context.ObtenerUsuariosCompradoresAsync();
+            var usuarios = await _context.Usuarios
+            .Where(u => u.Rol == "Comprador")
+            .ToListAsync();
             return Ok(usuarios);
         }
         

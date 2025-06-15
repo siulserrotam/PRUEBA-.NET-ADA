@@ -34,6 +34,9 @@
             "projectReferences": {
               "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj"
               }
             }
           }
@@ -138,14 +141,14 @@
         }
       }
     },
-    "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infrastructure\\Infrastructure.csproj",
-        "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj",
+        "projectName": "Infraestructure",
+        "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -166,9 +169,6 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Application\\Application.csproj"
-              },
               "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Domain\\Domain.csproj"
               }
@@ -257,8 +257,8 @@
               "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Application\\Application.csproj": {
                 "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Application\\Application.csproj"
               },
-              "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj"
               }
             }
           }
@@ -279,9 +279,17 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
