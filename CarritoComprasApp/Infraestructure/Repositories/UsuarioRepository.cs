@@ -14,10 +14,10 @@ namespace Infraestructure.Repositories
             _context = context;
         }
 
-        public async Task<Usuario?> ObtenerPorCredencialesAsync(string usuarioLogin, string clave)
+        public async Task<Usuario?> ObtenerPorLoginAsync(string usuarioLogin)
         {
             return await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.UsuarioLogin == usuarioLogin && u.Clave == clave);
+                .FirstOrDefaultAsync(u => u.UsuarioLogin == usuarioLogin);
         }
 
         public async Task<Usuario?> ObtenerPorIdentificacionAsync(string identificacion)
@@ -43,12 +43,12 @@ namespace Infraestructure.Repositories
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
         }
+
         public async Task<List<Usuario>> ObtenerUsuariosCompradoresSP()
         {
             return await _context.Usuarios
                 .Where(u => u.Rol == "Comprador")
                 .ToListAsync();
         }
-
     }
 }

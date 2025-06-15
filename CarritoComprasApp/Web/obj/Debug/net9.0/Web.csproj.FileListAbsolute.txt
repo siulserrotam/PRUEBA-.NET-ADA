@@ -534,3 +534,4 @@ C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Web\obj\Debug\net9.0\
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Web\obj\Debug\net9.0\Web.pdb
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Web\obj\Debug\net9.0\Web.genruntimeconfig.cache
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Web\obj\Debug\net9.0\ref\Web.dll
+C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Web\bin\Debug\net9.0\BCrypt.Net-Next.dll

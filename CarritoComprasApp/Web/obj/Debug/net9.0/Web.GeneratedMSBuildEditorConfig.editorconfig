@@ -17,65 +17,65 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Web
 build_property.RootNamespace = Web
-build_property.ProjectDir = C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\web\
+build_property.ProjectDir = C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Web\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\web
+build_property.MSBuildProjectDirectory = C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Web
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Admin/ActualizarProducto.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Admin/ActualizarProducto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWN0dWFsaXphclByb2R1Y3RvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Admin/Index.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Admin/Productos.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Admin/Productos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Admin/Transacciones.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Admin/Transacciones.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVHJhbnNhY2Npb25lcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Admin/Usuarios.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Admin/Usuarios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXN1YXJpb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Cliente/ConfirmarCompra.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Cliente/ConfirmarCompra.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxDb25maXJtYXJDb21wcmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Cliente/Productos.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Cliente/Productos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxQcm9kdWN0b3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Login/Index.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Register/Index.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Register/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0ZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/_ViewImports.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/_ViewStart.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/web/Views/Shared/_Layout.cshtml]
+[C:/Users/usuario/OneDrive/Escritorio/api/CarritoComprasApp/Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-lzldzk1rll
