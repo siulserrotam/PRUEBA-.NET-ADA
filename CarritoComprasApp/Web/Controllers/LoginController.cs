@@ -1,45 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
-using Application.Interfaces;
-using Domain.Models;
 
 namespace Web.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly IUsuarioService _usuarioService;
-
-        public LoginController(IUsuarioService usuarioService)
-        {
-            _usuarioService = usuarioService;
-        }
-
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(); // Retorna la vista Login/Index.cshtml
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string usuarioLogin, string clave)
+        public IActionResult Index(string usuarioLogin, string clave)
         {
-            var usuario = await _usuarioService.LoginAsync(usuarioLogin, clave);
-
-            if (usuario == null)
+            // Lógica de autenticación (puedes integrar IUsuarioService aquí)
+            if (usuarioLogin == "admin" && clave == "123") // Solo como ejemplo
             {
-                ViewBag.Mensaje = "Credenciales incorrectas.";
-                return View();
+                // Aquí puedes establecer sesión y redirigir
+                return RedirectToAction("Productos", "Cliente"); // o Admin
             }
 
-            HttpContext.Session.SetInt32("UsuarioId", usuario.Id);
-            HttpContext.Session.SetString("Rol", usuario.Rol);
-
-            if (usuario.Rol == "Administrador")
-                return RedirectToAction("Index", "Admin");
-            else
-                return RedirectToAction("Productos", "Cliente");
+            ViewBag.Mensaje = "Usuario o contraseña incorrectos";
+            return View();
         }
 
-        [HttpGet]
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
@@ -47,3 +31,4 @@ namespace Web.Controllers
         }
     }
 }
+

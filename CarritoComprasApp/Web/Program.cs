@@ -1,22 +1,29 @@
 using Application.Interfaces;
 using Application.Services;
+using Infraestructure.Data;
 using Infraestructure.Interfaces;
 using Infraestructure.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc; // Necesario para RazorRuntimeCompilation
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Configurar servicios HTTP y acceso a contexto
-builder.Services.AddHttpContextAccessor();
+// -------------------------
+// 1. Configurar servicios
+// -------------------------
 
+// HttpContext y HttpClient
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient("Api", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7249");
+    client.BaseAddress = new Uri("https://localhost:5113"); // URL de tu API REST
 });
 
-// 2. Registrar repositorios y servicios de aplicación
+// DbContext EF Core
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Repositorios y servicios de la aplicación
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<ITransaccionRepository, TransaccionRepository>();
@@ -24,21 +31,22 @@ builder.Services.AddScoped<ITransaccionService, TransaccionService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
-// 3. Configurar autenticación con cookies
+// Autenticación con cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Auth/Login";
-        options.LogoutPath = "/Auth/Logout";
+        options.LoginPath = "/Login/Index";       // Página de inicio de sesión
+        options.LogoutPath = "/Login/Logout";     // Página de cierre de sesión
+        options.AccessDeniedPath = "/Login/AccessDenied"; // Página si no tiene permisos
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
         options.SlidingExpiration = true;
     });
 
-// 4. Habilitar compilación en tiempo de ejecución para vistas Razor
+// Razor + recompilación en tiempo real (útil en desarrollo)
 builder.Services.AddControllersWithViews()
-    .AddRazorRuntimeCompilation(); // ✅ Esto requiere el paquete NuGet adicional (ver abajo)
+    .AddRazorRuntimeCompilation();
 
-// 5. Configurar sesión
+// Configuración de sesión
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -46,31 +54,34 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// 6. Construir la aplicación
 var app = builder.Build();
 
-// 7. Middleware
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
+// -------------------------
+// 2. Middleware
+// -------------------------
+
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
+// HTTPS redirection y archivos estáticos
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+// Enrutamiento, sesión y autenticación
 app.UseRouting();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// 8. Definir rutas
+// -------------------------
+// 3. Ruta por defecto
+// -------------------------
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Auth}/{action=Login}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();
