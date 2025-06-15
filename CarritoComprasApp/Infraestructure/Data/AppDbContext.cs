@@ -19,21 +19,44 @@ namespace Infraestructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configurar relaciones
-
+            // Configuración de la relación Usuario - Transacciones (1 a muchos)
             modelBuilder.Entity<Usuario>()
                 .HasMany(u => u.Transacciones)
                 .WithOne(t => t.Usuario)
                 .HasForeignKey(t => t.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Configuración de la relación Producto - Transacciones (1 a muchos)
             modelBuilder.Entity<Producto>()
                 .HasMany(p => p.Transacciones)
                 .WithOne(t => t.Producto)
                 .HasForeignKey(t => t.ProductoId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Si tienes más configuraciones personalizadas, agrégalas aquí
+            // Opcional: establecer claves primarias si no se usan convenciones
+            modelBuilder.Entity<Usuario>().HasKey(u => u.Id);
+            modelBuilder.Entity<Producto>().HasKey(p => p.Id);
+            modelBuilder.Entity<Transaccion>().HasKey(t => t.Id);
+
+            // Opcional: configuraciones adicionales como longitudes, requeridos, etc.
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.UsuarioLogin)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Clave)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<Producto>()
+                .Property(p => p.Nombre)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<Transaccion>()
+                .Property(t => t.Fecha)
+                .HasColumnType("datetime");
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\API\\API.csproj": {}
+    "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\API\\API.csproj": {
+    "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\API.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -68,13 +68,17 @@
               "target": "Package",
               "version": "[9.0.3, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.6, )"
             },
@@ -293,6 +297,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.6, )"

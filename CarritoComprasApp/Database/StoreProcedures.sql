@@ -28,7 +28,7 @@ END
 -- CREAR PROCEDIMIENTO: Registrar usuario
 -- ================================
 CREATE PROCEDURE usp_RegistrarUsuario
-    @Nombres NVARCHAR(100),
+    @Nombre NVARCHAR(100),
     @Direccion NVARCHAR(150),
     @Telefono NVARCHAR(20),
     @UsuarioLogin NVARCHAR(50),
@@ -37,8 +37,8 @@ CREATE PROCEDURE usp_RegistrarUsuario
     @Rol NVARCHAR(20)
 AS
 BEGIN
-    INSERT INTO Usuarios (Nombres, Direccion, Telefono, UsuarioLogin, Identificacion, Clave, Rol)
-    VALUES (@Nombres, @Direccion, @Telefono, @UsuarioLogin, @Identificacion, @Clave, @Rol)
+    INSERT INTO Usuarios (Nombre, Direccion, Telefono, UsuarioLogin, Identificacion, Clave, Rol)
+    VALUES (@Nombre, @Direccion, @Telefono, @UsuarioLogin, @Identificacion, @Clave, @Rol)
 END
 
 -- ================================

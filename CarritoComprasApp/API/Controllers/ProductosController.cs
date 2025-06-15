@@ -4,9 +4,7 @@ using Infraestructure.Data;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace API.Controllers
-
 {
     [Route("api/productos")]
     [ApiController]
@@ -23,8 +21,8 @@ namespace API.Controllers
         public async Task<IActionResult> GetDisponibles()
         {
             var productos = await _context.Productos
-            .Where(p => p.CantidadDisponible > 0)
-            .ToListAsync();
+                .Where(p => p.CantidadDisponible > 0)
+                .ToListAsync();
             return Ok(productos);
         }
 
@@ -38,6 +36,7 @@ namespace API.Controllers
             return Ok(producto);
         }
 
+        // Método 1: Actualización completa
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Producto productoActualizado)
         {
@@ -63,17 +62,16 @@ namespace API.Controllers
                 producto.Descripcion
             });
         }
-        
-        [HttpPut("{id}")]
+
+        // Método 2: Solo actualizar el stock (con ruta diferente)
+        [HttpPut("actualizar-stock/{id}")]
         public async Task<IActionResult> ActualizarProducto(int id, [FromBody] Producto model)
         {
             if (model == null || id != model.Id)
                 return BadRequest();
 
-            var usuarioEnSesion = HttpContext.Request.Headers["Usuario"]; // Opcional si validas desde header o token
+            var rol = "Administrador"; // Simulado. Cambiar por lógica real si se necesita
 
-            // Validar si el usuario tiene rol admin (opcional desde sesión o token)
-            var rol = "Administrador"; // Simulado, reemplazar por validación real
             if (rol != "Administrador")
                 return Unauthorized("Solo los administradores pueden actualizar productos");
 
@@ -86,6 +84,5 @@ namespace API.Controllers
             await _context.SaveChangesAsync();
             return Ok(producto);
         }
-
     }
 }

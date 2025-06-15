@@ -5,6 +5,7 @@ using Application.Interfaces;
 using Application.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 

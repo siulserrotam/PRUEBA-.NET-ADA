@@ -16,8 +16,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient("Api", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:5113"); // URL de tu API REST
-});
+    client.BaseAddress = new Uri("https://localhost:7249");
+}); // ← Esta llave faltaba
 
 // DbContext EF Core
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -35,9 +35,9 @@ builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Login/Index";       // Página de inicio de sesión
-        options.LogoutPath = "/Login/Logout";     // Página de cierre de sesión
-        options.AccessDeniedPath = "/Login/AccessDenied"; // Página si no tiene permisos
+        options.LoginPath = "/Login/Index";
+        options.LogoutPath = "/Login/Logout";
+        options.AccessDeniedPath = "/Login/AccessDenied";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
         options.SlidingExpiration = true;
     });
@@ -57,7 +57,17 @@ builder.Services.AddSession(options =>
 var app = builder.Build();
 
 // -------------------------
-// 2. Middleware
+// 2. Inicializar BD con datos semilla
+// -------------------------
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+    DbInitializer.Inicializar(context);
+}
+
+// -------------------------
+// 3. Middleware
 // -------------------------
 
 if (!app.Environment.IsDevelopment())
@@ -66,18 +76,17 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// HTTPS redirection y archivos estáticos
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// Enrutamiento, sesión y autenticación
 app.UseRouting();
+
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
 // -------------------------
-// 3. Ruta por defecto
+// 4. Ruta por defecto
 // -------------------------
 
 app.MapControllerRoute(

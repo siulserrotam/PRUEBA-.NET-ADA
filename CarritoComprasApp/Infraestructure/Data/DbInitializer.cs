@@ -1,5 +1,6 @@
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Infraestructure.Data
 {
@@ -7,40 +8,38 @@ namespace Infraestructure.Data
     {
         public static void Inicializar(AppDbContext context)
         {
-            // Aplica migraciones pendientes
             context.Database.Migrate();
 
-            // Verifica si ya existen usuarios
+            var hasher = new PasswordHasher<Usuario>();
+
             if (!context.Usuarios.Any())
             {
-                var usuarios = new List<Usuario>
+                var admin = new Usuario
                 {
-                    new Usuario
-                    {
-                        Nombres = "Admin",
-                        Direccion = "Oficina",
-                        Telefono = "1234567890",
-                        UsuarioLogin = "admin",
-                        Identificacion = "1001",
-                        Clave = "admin123", // Debes hashearla si usas seguridad real
-                        Rol = "Administrador"
-                    },
-                    new Usuario
-                    {
-                        Nombres = "Juan Pérez",
-                        Direccion = "Calle 123",
-                        Telefono = "555123456",
-                        UsuarioLogin = "juanp",
-                        Identificacion = "1002",
-                        Clave = "cliente123",
-                        Rol = "Cliente"
-                    }
+                    Nombre = "Admin",
+                    Direccion = "Oficina",
+                    Telefono = "1234567890",
+                    UsuarioLogin = "admin",
+                    Identificacion = "1001",
+                    Rol = "Administrador"
                 };
-                context.Usuarios.AddRange(usuarios);
+                admin.Clave = hasher.HashPassword(admin, "admin123");
+
+                var cliente = new Usuario
+                {
+                    Nombre = "Juan Pérez",
+                    Direccion = "Calle 123",
+                    Telefono = "555123456",
+                    UsuarioLogin = "juanp",
+                    Identificacion = "1002",
+                    Rol = "Cliente"
+                };
+                cliente.Clave = hasher.HashPassword(cliente, "cliente123");
+
+                context.Usuarios.AddRange(admin, cliente);
                 context.SaveChanges();
             }
 
-            // Verifica si ya existen productos
             if (!context.Productos.Any())
             {
                 var productos = new List<Producto>
