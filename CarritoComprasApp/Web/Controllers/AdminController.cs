@@ -42,18 +42,19 @@ namespace Web.Controllers
 
         public async Task<IActionResult> ActualizarProducto(int id)
         {
-            var productos = await _productoService.ObtenerProductosDisponiblesAsync();
-            var producto = productos.FirstOrDefault(p => p.Id == id);
-
+            var producto = await _productoService.ObtenerProductoPorIdAsync(id);
             if (producto == null)
+            {
                 return NotFound();
-
+            }
             return View(producto);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ActualizarProducto(Producto model)
         {
+            // Validar que el rol del usuario sea Administrador
             var rol = HttpContext.Session.GetString("Rol");
             if (rol != "Administrador")
             {
@@ -61,23 +62,24 @@ namespace Web.Controllers
                 return RedirectToAction("Productos");
             }
 
-            using var client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:7249");
-
-            var json = JsonConvert.SerializeObject(model);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await client.PutAsync($"/api/productos/{model.Id}", content);
-
-            if (response.IsSuccessStatusCode)
+            // Validar que la cantidad disponible sea un valor positivo
+            if (model.CantidadDisponible <= 0)
             {
-                TempData["Success"] = "Producto actualizado correctamente.";
-            }
-            else
-            {
-                TempData["Error"] = "Error al actualizar el producto.";
+                TempData["Error"] = "La cantidad disponible debe ser mayor a 0.";
+                return RedirectToAction("Productos");
             }
 
+            // Actualizar el producto en la base de datos
+            var productoExistente = await _productoService.ObtenerProductoPorIdAsync(model.Id);
+            if (productoExistente == null)
+            {
+                return NotFound();
+            }
+
+            productoExistente.CantidadDisponible = model.CantidadDisponible;
+            await _productoService.ActualizarProductoAsync(productoExistente);
+
+            TempData["Success"] = "Producto actualizado correctamente.";
             return RedirectToAction("Productos");
         }
     }
