@@ -18,9 +18,6 @@ namespace Application.Services
 
             public async Task<Usuario?> LoginAsync(string usuarioLogin, string clave)
             {
-                if (string.IsNullOrWhiteSpace(usuarioLogin) || string.IsNullOrWhiteSpace(clave))
-                    throw new ArgumentException("Usuario y clave son obligatorios.");
-
                 var usuario = await _usuarioRepository.ObtenerPorLoginAsync(usuarioLogin);
                 if (usuario == null)
                     return null;
@@ -56,15 +53,16 @@ namespace Application.Services
                 return await _usuarioRepository.ObtenerUsuariosCompradoresSP();
             }
 
-            public async Task CrearUsuarioAsync(Usuario usuario)
+           public async Task CrearUsuarioAsync(Usuario usuario)
             {
                 if (string.IsNullOrWhiteSpace(usuario.UsuarioLogin) || string.IsNullOrWhiteSpace(usuario.Clave))
                     throw new ArgumentException("UsuarioLogin y Clave son obligatorios.");
 
+                // Hashea la clave ANTES de guardarla
                 usuario.Clave = BCrypt.Net.BCrypt.HashPassword(usuario.Clave);
+
                 await _usuarioRepository.CrearUsuarioAsync(usuario);
-            
-        }
+            }
 
     }
 }

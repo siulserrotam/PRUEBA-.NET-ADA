@@ -1,6 +1,6 @@
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using BCrypt.Net;
 
 namespace Infraestructure.Data
 {
@@ -9,8 +9,6 @@ namespace Infraestructure.Data
         public static void Inicializar(AppDbContext context)
         {
             context.Database.Migrate();
-
-            var hasher = new PasswordHasher<Usuario>();
 
             if (!context.Usuarios.Any())
             {
@@ -21,9 +19,9 @@ namespace Infraestructure.Data
                     Telefono = "1234567890",
                     UsuarioLogin = "admin",
                     Identificacion = "1001",
-                    Rol = "Administrador"
+                    Rol = "Administrador",
+                    Clave = BCrypt.Net.BCrypt.HashPassword("admin123")
                 };
-                admin.Clave = hasher.HashPassword(admin, "admin123");
 
                 var cliente = new Usuario
                 {
@@ -32,9 +30,9 @@ namespace Infraestructure.Data
                     Telefono = "555123456",
                     UsuarioLogin = "juanp",
                     Identificacion = "1002",
-                    Rol = "Cliente"
+                    Rol = "Cliente",
+                    Clave = BCrypt.Net.BCrypt.HashPassword("cliente123")
                 };
-                cliente.Clave = hasher.HashPassword(cliente, "cliente123");
 
                 context.Usuarios.AddRange(admin, cliente);
                 context.SaveChanges();

@@ -2210,6 +2210,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.EntityFrameworkCore": "9.0.6",
@@ -5897,11 +5898,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\API.csproj",
+      "projectUniqueName": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\API.csproj",
+      "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\api\\API.csproj",
       "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\api\\obj\\",
+      "outputPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5922,14 +5923,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Application\\Application.csproj"
+            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Application\\Application.csproj"
             },
-            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Domain\\Domain.csproj"
+            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj"
+            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Infraestructure\\Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Infraestructure\\Infraestructure.csproj"
             }
           }
         }
