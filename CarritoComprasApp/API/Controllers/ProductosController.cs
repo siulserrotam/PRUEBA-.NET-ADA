@@ -26,16 +26,37 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> ActualizarProducto(int id, [FromBody] Producto model)
         {
+            // Validar rol de usuario
             var rol = Request.Headers["x-rol"].FirstOrDefault();
-            if (rol != "Administrador") return Unauthorized("Acceso restringido a administradores.");
+            if (rol != "Administrador")
+            {
+                return Unauthorized(new { mensaje = "Acceso restringido a administradores." });
+            }
 
+            // Buscar producto
             var producto = await _context.Productos.FindAsync(id);
-            if (producto == null) return NotFound("Producto no encontrado.");
+            if (producto == null)
+            {
+                return NotFound(new { mensaje = "Producto no encontrado." });
+            }
 
-            producto.CantidadDisponible = model.CantidadDisponible;
-            await _context.SaveChangesAsync();
+            // Validar cantidad disponible
+            if (model.CantidadDisponible < 0)
+            {
+                return BadRequest(new { mensaje = "La cantidad disponible no puede ser negativa." });
+            }
 
-            return Ok(producto);
+            // Actualizar producto
+            try
+            {
+                producto.CantidadDisponible = model.CantidadDisponible;
+                await _context.SaveChangesAsync();
+                return Ok(new { mensaje = "Producto actualizado correctamente.", producto });
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = "Error de concurrencia al actualizar el producto." });
+            }
         }
     }
 }
