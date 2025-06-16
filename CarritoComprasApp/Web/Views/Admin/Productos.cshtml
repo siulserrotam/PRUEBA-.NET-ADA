@@ -1,0 +1,27 @@
+@model List<Domain.Models.Producto>
+
+<h2>Productos Disponibles</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Nombre</td>
+                <td>@p.Descripcion</td>
+                <td>@p.CantidadDisponible</td>
+                <td>
+                    <a asp-action="ActualizarProducto" asp-route-id="@p.Id" class="btn btn-warning">Actualizar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
