@@ -2,10 +2,38 @@
     ViewData["Title"] = "Panel de Administrador";
 }
 
-<h2>Panel de Administrador</h2>
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Panel de Administrador</h2>
 
-<ul>
-    <li><a asp-controller="Admin" asp-action="Transacciones">Ver Transacciones</a></li>
-    <li><a asp-controller="Admin" asp-action="Usuarios">Ver Usuarios Compradores</a></li>
-    <li><a asp-controller="Admin" asp-action="Productos">Ver/Actualizar Productos</a></li>
-</ul>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Transacciones</h5>
+                    <p class="card-text">Consulta el historial completo de compras realizadas por los usuarios.</p>
+                    <a asp-controller="Admin" asp-action="Transacciones" class="btn btn-primary w-100">Ver Transacciones</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Usuarios Compradores</h5>
+                    <p class="card-text">Revisa la lista de usuarios registrados con rol de cliente.</p>
+                    <a asp-controller="Admin" asp-action="Usuarios" class="btn btn-success w-100">Ver Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Productos</h5>
+                    <p class="card-text">Visualiza y actualiza la cantidad disponible de productos.</p>
+                    <a asp-controller="Admin" asp-action="Productos" class="btn btn-warning w-100 text-white">Ver/Actualizar Productos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

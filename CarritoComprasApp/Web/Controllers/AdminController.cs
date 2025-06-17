@@ -1,8 +1,5 @@
-using System.Text;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Domain.Models;
 using Application.Interfaces;
@@ -22,36 +19,46 @@ namespace Web.Controllers
             _productoService = productoService;
         }
 
+        // Vista principal del administrador: /Admin/Index
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        // /Admin/Transacciones
         public async Task<IActionResult> Transacciones()
         {
             var transacciones = await _transaccionService.ObtenerHistorialTransaccionesAsync();
-            return View(transacciones);
+            return View("Transacciones", transacciones);
         }
 
+        // /Admin/Usuarios
         public async Task<IActionResult> Usuarios()
         {
             var usuarios = await _usuarioService.ObtenerUsuariosCompradoresAsync();
-            return View(usuarios);
+            return View("Usuarios", usuarios);
         }
 
+        // /Admin/Productos
         public async Task<IActionResult> Productos()
         {
             var productos = await _productoService.ObtenerProductosDisponiblesAsync();
-            return View(productos);
+            return View("Productos", productos);
         }
 
+        // /Admin/ActualizarProducto?id=5
         public async Task<IActionResult> ActualizarProducto(int id)
         {
-            var productos = await _productoService.ObtenerProductosDisponiblesAsync();
-            var producto = productos.FirstOrDefault(p => p.Id == id);
-
+            var producto = await _productoService.ObtenerProductoPorIdAsync(id);
             if (producto == null)
+            {
                 return NotFound();
-
-            return View(producto);
+            }
+            return View("ActualizarProducto", producto);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ActualizarProducto(Producto model)
         {
             var rol = HttpContext.Session.GetString("Rol");
@@ -61,24 +68,23 @@ namespace Web.Controllers
                 return RedirectToAction("Productos");
             }
 
-            using var client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:7249");
-
-            var json = JsonConvert.SerializeObject(model);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await client.PutAsync($"/api/productos/{model.Id}", content);
-
-            if (response.IsSuccessStatusCode)
+            if (model.CantidadDisponible <= 0)
             {
-                TempData["Success"] = "Producto actualizado correctamente.";
-            }
-            else
-            {
-                TempData["Error"] = "Error al actualizar el producto.";
+                TempData["Error"] = "La cantidad disponible debe ser mayor a 0.";
+                return RedirectToAction("Productos");
             }
 
-            return RedirectToAction("Productos");
+            var productoExistente = await _productoService.ObtenerProductoPorIdAsync(model.Id);
+            if (productoExistente == null)
+            {
+                return NotFound();
+            }
+
+            productoExistente.CantidadDisponible = model.CantidadDisponible;
+            await _productoService.ActualizarProductoAsync(productoExistente);
+
+            TempData["Success"] = "Producto actualizado correctamente.";
+            return RedirectToAction("Index");
         }
     }
 }

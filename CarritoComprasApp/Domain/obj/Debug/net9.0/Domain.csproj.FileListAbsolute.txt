@@ -1,4 +1,4 @@
-C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\bin\Debug\net9.0\Domain.deps.json
+C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\Domain\bin\Debug\net9.0\Domain.deps.json
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\bin\Debug\net9.0\Domain.dll
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\bin\Debug\net9.0\Domain.pdb
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\obj\Debug\net9.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
@@ -9,4 +9,4 @@ C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\obj\Debug\net9
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\obj\Debug\net9.0\Domain.dll
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\obj\Debug\net9.0\refint\Domain.dll
 C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\obj\Debug\net9.0\Domain.pdb
-C:\Users\usuario\OneDrive\Escritorio\api\CarritoComprasApp\Domain\obj\Debug\net9.0\ref\Domain.dll
+C:\Users\usuario\OneDrive\Escritorio\api\carritocomprasapp\Domain\obj\Debug\net9.0\ref\Domain.dll
