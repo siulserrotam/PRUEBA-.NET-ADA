@@ -19,7 +19,6 @@ namespace Web.Controllers
             _transaccionService = transaccionService;
         }
 
-        // Muestra la lista de productos disponibles
         [HttpGet]
         public async Task<IActionResult> Productos()
         {
@@ -27,7 +26,6 @@ namespace Web.Controllers
             return View(productos);
         }
 
-        // Muestra la vista de confirmación de compra
         [HttpGet]
         public async Task<IActionResult> ConfirmarCompra(int id)
         {
@@ -40,12 +38,10 @@ namespace Web.Controllers
             return View(producto);
         }
 
-        // Procesa la compra y registra la transacción
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmarCompra(int id, int cantidad)
         {
-            // Validar existencia del producto
             var producto = await _productoService.ObtenerProductoPorIdAsync(id);
             if (producto == null)
             {
@@ -53,14 +49,12 @@ namespace Web.Controllers
                 return RedirectToAction("Productos");
             }
 
-            // Validar cantidad
             if (cantidad <= 0 || cantidad > producto.CantidadDisponible)
             {
                 TempData["Error"] = "Cantidad inválida o excede el stock disponible.";
                 return RedirectToAction("ConfirmarCompra", new { id });
             }
 
-            // Obtener ID del usuario desde la sesión
             var usuarioIdStr = HttpContext.Session.GetString("UsuarioId");
             if (string.IsNullOrEmpty(usuarioIdStr) || !int.TryParse(usuarioIdStr, out int usuarioId))
             {
@@ -68,7 +62,6 @@ namespace Web.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            // Registrar transacción
             try
             {
                 await _transaccionService.RegistrarTransaccionAsync(usuarioId, id, cantidad);

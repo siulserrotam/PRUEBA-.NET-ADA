@@ -28,13 +28,12 @@ namespace Web.Controllers
 
             if (usuario != null)
             {
-                // Guardar sesión
                 HttpContext.Session.SetString("UsuarioId", usuario.Id.ToString());
                 HttpContext.Session.SetString("Rol", usuario.Rol ?? "");
+                HttpContext.Session.SetString("Nombre", usuario.Nombre ?? "");
 
-                // Redirigir según rol
                 if (usuario.Rol == "Administrador")
-                    return RedirectToAction("Productos", "Admin");
+                    return RedirectToAction("Index", "Admin");
                 else
                     return RedirectToAction("Productos", "Cliente");
             }

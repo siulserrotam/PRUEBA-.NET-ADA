@@ -47,7 +47,7 @@ namespace Infraestructure.Repositories
         public async Task<List<Usuario>> ObtenerUsuariosCompradoresSP()
         {
             return await _context.Usuarios
-                .Where(u => u.Rol == "Comprador")
+                .Where(u => u.Rol == "Cliente")
                 .ToListAsync();
         }
     }

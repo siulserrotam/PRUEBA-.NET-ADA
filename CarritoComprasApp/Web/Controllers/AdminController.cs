@@ -19,34 +19,29 @@ namespace Web.Controllers
             _productoService = productoService;
         }
 
-        // Vista principal del administrador: /Admin/Index
         public IActionResult Index()
         {
             return View();
         }
 
-        // /Admin/Transacciones
         public async Task<IActionResult> Transacciones()
         {
             var transacciones = await _transaccionService.ObtenerHistorialTransaccionesAsync();
             return View("Transacciones", transacciones);
         }
 
-        // /Admin/Usuarios
         public async Task<IActionResult> Usuarios()
         {
             var usuarios = await _usuarioService.ObtenerUsuariosCompradoresAsync();
             return View("Usuarios", usuarios);
         }
 
-        // /Admin/Productos
         public async Task<IActionResult> Productos()
         {
             var productos = await _productoService.ObtenerProductosDisponiblesAsync();
             return View("Productos", productos);
         }
 
-        // /Admin/ActualizarProducto?id=5
         public async Task<IActionResult> ActualizarProducto(int id)
         {
             var producto = await _productoService.ObtenerProductoPorIdAsync(id);
@@ -64,7 +59,6 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ActualizarProducto(Producto model)
         {
-            // Validar que el rol del usuario sea Administrador
             var rol = HttpContext.Session.GetString("Rol");
             if (rol != "Administrador")
             {

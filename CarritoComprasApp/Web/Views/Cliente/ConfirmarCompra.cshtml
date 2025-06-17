@@ -9,7 +9,6 @@
 <form id="formCompra" asp-action="ConfirmarCompra" method="post">
     @Html.AntiForgeryToken()
 
-    <!-- Cambiado name="productoId" por name="id" -->
     <input type="hidden" name="id" value="@Model.Id" />
 
     <div class="mb-3">

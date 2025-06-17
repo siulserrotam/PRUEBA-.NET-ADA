@@ -11,7 +11,6 @@ namespace Domain.Models
         public string Clave { get; set; } = string.Empty; // Codificada
         public string Rol { get; set; } = "Cliente"; // o "Administrador"
 
-        // Navegación
         public ICollection<Transaccion>? Transaccion { get; set; }
     }
 }
