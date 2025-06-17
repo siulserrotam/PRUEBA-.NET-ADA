@@ -1,8 +1,5 @@
-using System.Text;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Domain.Models;
 using Application.Interfaces;
@@ -22,24 +19,34 @@ namespace Web.Controllers
             _productoService = productoService;
         }
 
+        // Vista principal del administrador: /Admin/Index
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        // /Admin/Transacciones
         public async Task<IActionResult> Transacciones()
         {
             var transacciones = await _transaccionService.ObtenerHistorialTransaccionesAsync();
-            return View(transacciones);
+            return View("Transacciones", transacciones);
         }
 
+        // /Admin/Usuarios
         public async Task<IActionResult> Usuarios()
         {
             var usuarios = await _usuarioService.ObtenerUsuariosCompradoresAsync();
-            return View(usuarios);
+            return View("Usuarios", usuarios);
         }
 
+        // /Admin/Productos
         public async Task<IActionResult> Productos()
         {
             var productos = await _productoService.ObtenerProductosDisponiblesAsync();
-            return View(productos);
+            return View("Productos", productos);
         }
 
+        // /Admin/ActualizarProducto?id=5
         public async Task<IActionResult> ActualizarProducto(int id)
         {
             var producto = await _productoService.ObtenerProductoPorIdAsync(id);
@@ -47,7 +54,10 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
-            return View(producto);
+
+
+            return View("ActualizarProducto", producto);
+
         }
 
         [HttpPost]
@@ -62,14 +72,14 @@ namespace Web.Controllers
                 return RedirectToAction("Productos");
             }
 
-            // Validar que la cantidad disponible sea un valor positivo
+
             if (model.CantidadDisponible <= 0)
             {
                 TempData["Error"] = "La cantidad disponible debe ser mayor a 0.";
                 return RedirectToAction("Productos");
             }
 
-            // Actualizar el producto en la base de datos
+
             var productoExistente = await _productoService.ObtenerProductoPorIdAsync(model.Id);
             if (productoExistente == null)
             {
@@ -80,7 +90,8 @@ namespace Web.Controllers
             await _productoService.ActualizarProductoAsync(productoExistente);
 
             TempData["Success"] = "Producto actualizado correctamente.";
-            return RedirectToAction("Productos");
+            return RedirectToAction("Index");
+
         }
     }
 }

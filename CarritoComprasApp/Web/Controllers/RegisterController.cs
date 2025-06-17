@@ -30,7 +30,7 @@ namespace Web.Controllers
                 return View();
             }
 
-            usuario.Rol = "Cliente"; // Por defecto, nuevos usuarios son clientes
+            usuario.Rol = "Cliente"; 
 
             await _usuarioService.CrearUsuarioAsync(usuario);
 
