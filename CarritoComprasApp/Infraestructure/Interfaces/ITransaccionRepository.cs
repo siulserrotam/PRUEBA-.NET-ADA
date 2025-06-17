@@ -6,7 +6,8 @@ namespace Infraestructure.Interfaces
 {
     public interface ITransaccionRepository
     {
-        Task RegistrarTransaccionSP(int usuarioId, int productoId, int CantidadDisponible);
+        Task RegistrarTransaccionSP(int usuarioId, int productoId, int cantidad);
+
         Task<List<Transaccion>> ObtenerHistorialTransaccionesSP();
     }
 }

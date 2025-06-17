@@ -5907,8 +5907,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Infraestructure\\Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\carritocomprasapp\\Infraestructure\\Infraestructure.csproj"
+            "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\usuario\\OneDrive\\Escritorio\\api\\CarritoComprasApp\\Infraestructure\\Infraestructure.csproj"
             }
           }
         }

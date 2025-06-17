@@ -9,8 +9,8 @@
 <form id="formCompra" asp-action="ConfirmarCompra" method="post">
     @Html.AntiForgeryToken()
 
-    <input type="hidden" name="Id" value="@Model.Id" />
-    <input type="hidden" id="CantidadDisponible" name="CantidadDisponible" value="@Model.CantidadDisponible" />
+    <!-- Cambiado name="productoId" por name="id" -->
+    <input type="hidden" name="id" value="@Model.Id" />
 
     <div class="mb-3">
         <label class="form-label">Producto:</label>
@@ -29,7 +29,7 @@
 
     <div class="mb-3">
         <label class="form-label">Cantidad a Comprar:</label>
-        <input type="number" name="Cantidad" id="Cantidad" class="form-control" min="1" max="@Model.CantidadDisponible" required />
+        <input type="number" name="cantidad" id="Cantidad" class="form-control" min="1" max="@Model.CantidadDisponible" required />
     </div>
 
     <button type="submit" class="btn btn-success">Confirmar Compra</button>

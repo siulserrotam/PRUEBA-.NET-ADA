@@ -21,14 +21,14 @@ namespace Infraestructure.Data
 
             // Configuración de la relación Usuario - Transacciones (1 a muchos)
             modelBuilder.Entity<Usuario>()
-                .HasMany(u => u.Transacciones)
+                .HasMany(u => u.Transaccion)
                 .WithOne(t => t.Usuario)
                 .HasForeignKey(t => t.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Configuración de la relación Producto - Transacciones (1 a muchos)
             modelBuilder.Entity<Producto>()
-                .HasMany(p => p.Transacciones)
+                .HasMany(p => p.Transaccion)
                 .WithOne(t => t.Producto)
                 .HasForeignKey(t => t.ProductoId)
                 .OnDelete(DeleteBehavior.Restrict);

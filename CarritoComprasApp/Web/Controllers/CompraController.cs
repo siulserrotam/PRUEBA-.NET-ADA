@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Infraestructure.Data;
-using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web.Controllers
 {
@@ -14,23 +14,8 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult RealizarCompra(int productoId, int cantidad)
+        public IActionResult ConfirmarCompra(int productoId, int cantidad)
         {
-            var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId);
-
-            if (producto == null)
-            {
-                TempData["Error"] = "Producto no encontrado.";
-                return RedirectToAction("Productos", "Cliente");
-            }
-
-            if (cantidad <= 0 || cantidad > producto.CantidadDisponible)
-            {
-                TempData["Error"] = "Cantidad inválida o supera el stock disponible.";
-                return RedirectToAction("ConfirmarCompra", "Cliente", new { id = productoId });
-            }
-
-            // Simula un usuario autenticado (reemplaza esto por el usuario real desde sesión)
             var usuarioIdStr = HttpContext.Session.GetString("UsuarioId");
             if (string.IsNullOrEmpty(usuarioIdStr) || !int.TryParse(usuarioIdStr, out int usuarioId))
             {
@@ -38,21 +23,18 @@ namespace Web.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            // Crear transacción
-            var transaccion = new Transaccion
+            try
             {
-                UsuarioId = usuarioId,
-                ProductoId = productoId,
-                Cantidad = cantidad,
-                Fecha = DateTime.Now
-            };
+                var query = "EXEC usp_InsertarTransaccion @UsuarioId = {0}, @ProductoId = {1}, @Cantidad = {2}";
+                _context.Database.ExecuteSqlRaw(query, usuarioId, productoId, cantidad);
 
-            // Actualizar stock y guardar cambios
-            producto.CantidadDisponible -= cantidad;
-            _context.Transacciones.Add(transaccion);
-            _context.SaveChanges();
+                TempData["Success"] = "Compra realizada exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error al realizar la compra: " + ex.Message;
+            }
 
-            TempData["Success"] = "Compra realizada exitosamente.";
             return RedirectToAction("Productos", "Cliente");
         }
     }

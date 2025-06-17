@@ -12,6 +12,6 @@ namespace Domain.Models
         public string Rol { get; set; } = "Cliente"; // o "Administrador"
 
         // Navegación
-        public ICollection<Transaccion>? Transacciones { get; set; }
+        public ICollection<Transaccion>? Transaccion { get; set; }
     }
 }

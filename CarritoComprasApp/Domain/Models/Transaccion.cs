@@ -1,6 +1,7 @@
 namespace Domain.Models
 {
     public class Transaccion
+
     {
         public int Id { get; set; } // Correcto
         public int UsuarioId { get; set; } // Correcto

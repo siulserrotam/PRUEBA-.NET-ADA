@@ -8,6 +8,6 @@ namespace Domain.Models
         public int CantidadDisponible { get; set; } // Correcto
 
         // Navegación
-        public ICollection<Transaccion>? Transacciones { get; set; } // Correcto
+        public ICollection<Transaccion>? Transaccion { get; set; } // Correcto
     }
 }

@@ -122,13 +122,13 @@ namespace Infraestructure.Migrations
             modelBuilder.Entity("Domain.Models.Transaccion", b =>
                 {
                     b.HasOne("Domain.Models.Producto", "Producto")
-                        .WithMany("Transacciones")
+                        .WithMany("Transaccion")
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Domain.Models.Usuario", "Usuario")
-                        .WithMany("Transacciones")
+                        .WithMany("Transaccion")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -140,12 +140,12 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Models.Producto", b =>
                 {
-                    b.Navigation("Transacciones");
+                    b.Navigation("Transaccion");
                 });
 
             modelBuilder.Entity("Domain.Models.Usuario", b =>
                 {
-                    b.Navigation("Transacciones");
+                    b.Navigation("Transaccion");
                 });
 #pragma warning restore 612, 618
         }

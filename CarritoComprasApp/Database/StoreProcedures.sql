@@ -1,8 +1,9 @@
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Infrastructure.Migrations
+namespace Infraestructure.Migrations
 {
     public partial class AddStoredProcedures : Migration
     {

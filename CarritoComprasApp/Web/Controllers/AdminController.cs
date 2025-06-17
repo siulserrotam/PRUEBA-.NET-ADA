@@ -90,7 +90,7 @@ namespace Web.Controllers
             await _productoService.ActualizarProductoAsync(productoExistente);
 
             TempData["Success"] = "Producto actualizado correctamente.";
-            return RedirectToAction("Index");
+            return RedirectToAction("productos");
 
         }
     }
