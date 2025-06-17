@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.querySelector("input[name='Clave']");
     const cantidadInput = document.getElementById("CantidadDisponible");
 
+
     // Validación de contraseña con HTML5 (si existe el campo)
     if (passwordInput) {
         passwordInput.setAttribute("minlength", "4");

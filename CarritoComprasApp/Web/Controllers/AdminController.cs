@@ -54,13 +54,17 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
+
+
             return View("ActualizarProducto", producto);
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ActualizarProducto(Producto model)
         {
+            // Validar que el rol del usuario sea Administrador
             var rol = HttpContext.Session.GetString("Rol");
             if (rol != "Administrador")
             {
@@ -68,11 +72,13 @@ namespace Web.Controllers
                 return RedirectToAction("Productos");
             }
 
+
             if (model.CantidadDisponible <= 0)
             {
                 TempData["Error"] = "La cantidad disponible debe ser mayor a 0.";
                 return RedirectToAction("Productos");
             }
+
 
             var productoExistente = await _productoService.ObtenerProductoPorIdAsync(model.Id);
             if (productoExistente == null)
@@ -85,6 +91,7 @@ namespace Web.Controllers
 
             TempData["Success"] = "Producto actualizado correctamente.";
             return RedirectToAction("Index");
+
         }
     }
 }
